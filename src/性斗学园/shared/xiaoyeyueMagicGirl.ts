@@ -2,7 +2,7 @@ import { BONUS_KEYS, BonusStats, clamp, createEmptyBonusStats, normalizeBonusSta
 
 export const XIAOYEYUE_MAGIC_GIRL_REQUIRED_NAME = '小夜月静夜';
 export const XIAOYEYUE_LIGHT_DARK_CONSTITUTION_ID = 'c_xiaoyeyue_light_dark_magic_girl';
-export const XIAOYEYUE_LIGHT_DARK_CONSTITUTION_NAME = '光与暗交融的魔法少女';
+export const XIAOYEYUE_LIGHT_DARK_CONSTITUTION_NAME = '光与暗交融的魔法少男';
 
 const LIGHT_DARK_DYNAMIC_BONUS_KEYS = ['基础性斗力成算', '基础忍耐力成算'] as const;
 

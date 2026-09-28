@@ -928,7 +928,7 @@ async function updateDependentVariables() {
       const updates: Record<string, any> = {};
       const xiaoyeyueBonusChanged = syncXiaoyeyueLightDarkStatusBonus(statData);
       if (xiaoyeyueBonusChanged) {
-        console.info('[性斗学园脚本] 已同步光与暗交融的魔法少女动态加成');
+        console.info('[性斗学园脚本] 已同步光与暗交融的魔法少男动态加成');
       }
 
       const currentLevel = Number(getValue(mvuData, '角色基础._等级', 1) as any);

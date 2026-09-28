@@ -315,6 +315,8 @@ export function getChibiAvatarUrl(chibiName: string): string {
 }
 
 export function getDefaultPlayerAvatarUrl(gender: unknown): string {
+  // 全员性转改版：显示名与资源名整体对调，所以这里的判断与上游相反——
+  // 存档性别为「女」时取「男主」头像。改回去会让男女默认头像对调。
   const avatarName = String(gender || '').trim() === '女' ? '男主' : '女主';
   return getChibiAvatarUrl(avatarName);
 }

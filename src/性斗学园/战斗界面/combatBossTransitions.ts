@@ -311,7 +311,7 @@ export function createChristinePhaseSideEffectActions(nextPhase: 1 | 2): BossPha
     },
     {
       kind: 'log',
-      message: '【女王觉醒】克里斯的里人格觉醒！物品和投降被封印！',
+      message: '【男王觉醒】克里斯的里人格觉醒！物品和投降被封印！',
       source: 'system',
       type: 'critical',
     },

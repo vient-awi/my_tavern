@@ -540,7 +540,7 @@ export const FEMALE_CONSTITUTIONS: ConstitutionData[] = [
   {
     id: XIAOYEYUE_LIGHT_DARK_CONSTITUTION_ID,
     name: XIAOYEYUE_LIGHT_DARK_CONSTITUTION_NAME,
-    description: '光与暗在体内轮转的魔法少女体质',
+    description: '光与暗在体内轮转的魔法少男体质',
     effectDescription:
       '仅小夜月静夜可选。堕落度0~50时，忍耐力乘算+100%到+0%递减；堕落度51~100时，性斗力乘算+1%到+100%递增',
     icon: 'Eclipse',

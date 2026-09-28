@@ -217,7 +217,7 @@ export const grandWheelFetishPool: FetishEntry[] = [
     bonuses: { 闪避率加成: 9, 暴击率加成: 9, 基础性斗力加成: 16 },
   },
   {
-    name: '女王踩踏仪式感',
+    name: '男王踩踏仪式感',
     alignment: 'S',
     description: '对仪式化支配动作有强烈偏好，魅力压制力暴涨。',
     bonuses: { 魅力加成: 26, 基础性斗力成算: 10, 基础忍耐力加成: -8 },

@@ -771,7 +771,7 @@ const NPC_SKILL_SPECS: Record<SkillFamily, NpcSkillSpec[]> = {
     {
       id: 'npc_mental_6',
       name: '威压顺从',
-      description: '释放女王般的气场迫使屈服',
+      description: '释放男王般的气场迫使屈服',
       formula: damage(DamageSource.CHARM, 3.5),
       accuracy: 85,
       critModifier: 0,

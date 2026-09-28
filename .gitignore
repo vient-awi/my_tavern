@@ -15,3 +15,12 @@ components.d.ts
 .cardrc.json
 
 .claude/
+
+# 构建产物。dist/ 可由 src/ 随时重建，日常不入库。
+# 发版给 jsDelivr 外链用时，单独强制添加需要的那一个文件：
+#   git add -f dist/性斗学园/性斗学园脚本/index.js
+# 详见 src/性斗学园/发布与更新流程.md
+dist/
+
+# 酒馆本机数据，体积大且与代码无关
+酒馆数据/

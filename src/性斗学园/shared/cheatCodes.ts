@@ -248,7 +248,7 @@ const CHEAT_CODE_UPDATES: Record<string, CheatUpdate> = {
   PRINCESS: {
     '物品系统.背包.蕾丝阳伞': equipment({
       level: 'A',
-      description: '公主的象征，优雅而高贵。虽然看起来很脆弱，但总有人会保护她。',
+      description: '王子的象征，优雅而高贵。虽然看起来很脆弱，但总有人会保护他。',
       stats: { 魅力加成: 8, 幸运加成: 12, 基础性斗力成算: -10 },
       slot: '副装备',
     }),
@@ -304,7 +304,7 @@ const CHEAT_CODE_UPDATES: Record<string, CheatUpdate> = {
       stats: { 魅力加成: 8, 幸运加成: 8 },
       slot: '饰品',
     }),
-    '物品系统.背包.玉兔兔女郎服': equipment({
+    '物品系统.背包.玉兔兔男郎服': equipment({
       level: 'A',
       description: '兔耳、领结与高开衩剪裁让腰臀几乎无法隐藏，白花花的大腿裸露在外，在战斗中本身就是一种挑衅。',
       stats: { 魅力加成: 12, 闪避率加成: 8 },

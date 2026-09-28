@@ -53,7 +53,7 @@ function inferTags(name: string): string[] {
   if (/魅惑|诱惑|吻|舌|气味|发情|吐息|甜蜜|毒舌/.test(name)) tags.push('charm');
   if (/花|藤|种子|花粉|植物/.test(name)) tags.push('plant');
   if (/花粉/.test(name)) tags.push('pollen');
-  if (/寄生|种子|卵|孕|子宫|胎|茧|同化|注入|植入|改造/.test(name)) tags.push('parasite', 'assimilation');
+  if (/寄生|种子|卵|孕|生殖腔|胎|茧|同化|注入|植入|改造/.test(name)) tags.push('parasite', 'assimilation');
   if (/雪|霜|冰|寒/.test(name)) tags.push('cold', 'snow');
   if (/阳气|吸阳|汲取/.test(name)) tags.push('yangDrain');
   if (/丝|蛛|茧|缠丝/.test(name)) tags.push('silk', 'cocoon');
@@ -66,9 +66,9 @@ function inferTags(name: string): string[] {
   if (/核心/.test(name)) tags.push('core');
   if (/烙印|纹章|血族|契约|诅咒|刻印/.test(name)) tags.push('mark', 'curse', 'domination');
   if (/支配|压制|命令|所有物/.test(name)) tags.push('domination');
-  if (/圣|净化|祈祷|神圣|神恩|赎罪|贞洁|圣母|神杖/.test(name)) tags.push('holy', 'purification', 'ritual');
+  if (/圣|净化|祈祷|神圣|神恩|赎罪|贞洁|圣父|神杖/.test(name)) tags.push('holy', 'purification', 'ritual');
   if (/狐|九尾|狐火/.test(name)) tags.push('foxFire');
-  if (/母|哺乳|乳|怀抱|胎内|子宫|母性/.test(name)) tags.push('mother');
+  if (/父|哺乳|乳|怀抱|胎内|生殖腔|父性/.test(name)) tags.push('mother');
   if (/符|封印|贴符/.test(name)) tags.push('forbiddenTalisman');
   if (/猫|肉垫|死库水/.test(name)) tags.push('cat');
   if (/仪式|审判|终审|终极|终局|回归|永冻|重生/.test(name)) tags.push('ritual');
@@ -85,7 +85,7 @@ function inferType(name: string, index: number, total: number): SkillType {
   if (/洗脑|记忆|魅惑|低语|ASMR|催眠|羞辱|祝福|宣言|劝降|契约|烙印|改写|告解/.test(name)) {
     return SkillType.MENTAL;
   }
-  if (/吻|舌|乳|气息|吐息|花粉|母性|血乳|哺育|诱惑/.test(name)) {
+  if (/吻|舌|乳|气息|吐息|花粉|父性|血乳|哺育|诱惑/.test(name)) {
     return SkillType.CHARM;
   }
   return SkillType.PHYSICAL;
@@ -103,7 +103,7 @@ function inferSource(type: SkillType, name: string, fallback?: DamageSource): Da
 function inferIcon(name: string, type: SkillType): string {
   if (/足|踩|踏|踢/.test(name)) return 'Footprints';
   if (/吻|舌|口/.test(name)) return 'Heart';
-  if (/乳|母|哺/.test(name)) return 'Milk';
+  if (/乳|父|哺/.test(name)) return 'Milk';
   if (/血|吸血/.test(name)) return 'Droplets';
   if (/冰|雪|寒|霜/.test(name)) return 'Snowflake';
   if (/花|藤|种子|植物/.test(name)) return 'Flower2';
@@ -145,7 +145,7 @@ function inferBuffs(name: string, type: SkillType): BuffList {
   if (/冰|雪|寒|霜|粘液|石化|烟雾|气息/.test(name)) {
     buffs.push({ type: BuffType.DODGE_DOWN, value: 15, isPercent: true, duration: 2, stackable: false });
   }
-  if (/祝福|强化|召唤|契约|血之契约|母性改造/.test(name) && type !== SkillType.ULTIMATE) {
+  if (/祝福|强化|召唤|契约|血之契约|父性改造/.test(name) && type !== SkillType.ULTIMATE) {
     buffs.push({ type: BuffType.ATK_UP, value: 18, isPercent: true, duration: 3, stackable: false });
   }
   return buffs;
@@ -153,7 +153,7 @@ function inferBuffs(name: string, type: SkillType): BuffList {
 
 function inferHitCount(name: string): number {
   if (/九重|群狼|双重|双足|多段|全身/.test(name)) return 3;
-  if (/双|连|轮流|姐妹|组合|前后|铃铛/.test(name)) return 2;
+  if (/双|连|轮流|兄弟|组合|前后|铃铛/.test(name)) return 2;
   return 1;
 }
 

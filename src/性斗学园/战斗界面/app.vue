@@ -8552,7 +8552,7 @@ async function handleSurrender() {
 
   // BOSS第二阶段禁用投降
   if (isBossSurrenderDisabled.value) {
-    addLog('「逃跑？在女王面前...你以为你有这个资格吗？」', 'enemy', 'critical');
+    addLog('「逃跑？在男王面前...你以为你有这个资格吗？」', 'enemy', 'critical');
     return;
   }
 
@@ -8583,7 +8583,7 @@ function toggleSurrenderMenu() {
   }
 
   if (isBossSurrenderDisabled.value) {
-    addLog('「逃跑？在女王面前...你以为你有这个资格吗？」', 'enemy', 'critical');
+    addLog('「逃跑？在男王面前...你以为你有这个资格吗？」', 'enemy', 'critical');
     return;
   }
 
@@ -10494,7 +10494,7 @@ function getSinTalentDisplayName(sinType: string): string {
 .boss-text-overlay.boss-text-christine {
   font-size: 40px;
   letter-spacing: 4px;
-  color: #c084fc; // 紫色调，符合克里斯的女王形象
+  color: #c084fc; // 紫色调，符合克里斯的男王形象
   text-shadow:
     0 0 20px rgba(192, 132, 252, 0.8),
     0 0 40px rgba(192, 132, 252, 0.4);
