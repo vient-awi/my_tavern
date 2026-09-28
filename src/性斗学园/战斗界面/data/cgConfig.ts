@@ -242,7 +242,7 @@ const yiLiShaBaiYeYuConfig: CharacterCGConfig = {
       {
         id: 'forced_lactation',
         name: '伊利亚斯夜羽-强制喂乳事件',
-        description: '你被伊利亚斯击败，作为惩罚，他将你悬挂束缚且暴露胸部，通过药物强制催乳并将你视为母亲直接吸乳',
+        description: '你被伊利亚斯击败，作为惩罚，他将你悬挂束缚且暴露胸部，通过药物强制催乳并将你视为父亲直接吸乳',
         images: [
           '伊丽莎白夜羽-强制喂乳事件-1.png',
           '伊丽莎白夜羽-强制喂乳事件-2.png',
@@ -324,9 +324,9 @@ const yiLiShaBaiYeYuConfig: CharacterCGConfig = {
       },
       {
         id: 'bloodline_madonna_rare',
-        name: '（稀有事件）伊利亚斯夜羽-血族圣母事件',
+        name: '（稀有事件）伊利亚斯夜羽-血族圣父事件',
         description:
-          '你被伊利亚斯击败，但他并不想惩罚你，你将被强制赋予母亲身份并索取哺乳，并因被唤醒父性本能使你认知渐渐扭曲，将伊利亚斯视为亲生男儿，最终导致自身生理转化为吸血鬼并彻底丧失自我，沦为永远陪伴并填补伊利亚斯内心空虚的专属血族母亲——6％',
+          '你被伊利亚斯击败，但他并不想惩罚你，你将被强制赋予父亲身份并索取哺乳，并因被唤醒父性本能使你认知渐渐扭曲，将伊利亚斯视为亲生男儿，最终导致自身生理转化为吸血鬼并彻底丧失自我，沦为永远陪伴并填补伊利亚斯内心空虚的专属血族父亲——6％',
         images: ['伊丽莎白夜羽-血族圣母事件-1.png'],
         probability: 0.06,
       },
@@ -950,8 +950,7 @@ const liLiAnConfig: CharacterCGConfig = {
       {
         id: 'lilian_urethra_training_male',
         name: '利安-尿道调教事件',
-        description:
-          '你被利安击败，作为惩罚他会用纤细的、涂满润滑液的马眼棒轻柔而深入地刺激你的尿道，带来禁忌的快感。',
+        description: '你被利安击败，作为惩罚他会用纤细的、涂满润滑液的马眼棒轻柔而深入地刺激你的尿道，带来禁忌的快感。',
         images: ['莉莉安-尿道调教事件-1.png', '莉莉安-尿道调教事件-2.png'],
       },
       {
@@ -991,8 +990,7 @@ const liLiAnConfig: CharacterCGConfig = {
       {
         id: 'lilian_suspended_sex_victory_male',
         name: '利安-悬空性爱事件',
-        description:
-          '你战胜了利安，作为奖励你可以将他整个抱起，让他在悬空的不安全感与重力的作用下被你的肉棒不断调教。',
+        description: '你战胜了利安，作为奖励你可以将他整个抱起，让他在悬空的不安全感与重力的作用下被你的肉棒不断调教。',
         images: ['莉莉安-悬空性爱事件-1.png', '莉莉安-悬空性爱事件-2.png'],
       },
     ],
@@ -1009,8 +1007,7 @@ const liLiAnConfig: CharacterCGConfig = {
       {
         id: 'lilian_urethra_training_female',
         name: '利安-尿道调教事件',
-        description:
-          '你被利安击败，作为惩罚他会用纤细的、涂满润滑液的尿道棒轻柔而深入地刺激你的尿道，带来禁忌的快感。',
+        description: '你被利安击败，作为惩罚他会用纤细的、涂满润滑液的尿道棒轻柔而深入地刺激你的尿道，带来禁忌的快感。',
         images: ['莉莉安-尿道调教事件-1.png', '莉莉安-尿道调教事件-2.png'],
       },
       {
@@ -1585,7 +1582,8 @@ const shenQiLinConfig: CharacterCGConfig = {
       {
         id: 'bondage_panty_face_sit',
         name: '神崎凛司-捆绑蒙面放置事件',
-        description: '你被神崎凛司击败，作为惩罚他会将你捆绑，用内裤蒙上你的脸并将你放置，而你只能眼睁睁看着神崎凛司快活。',
+        description:
+          '你被神崎凛司击败，作为惩罚他会将你捆绑，用内裤蒙上你的脸并将你放置，而你只能眼睁睁看着神崎凛司快活。',
         images: ['捆绑蒙面放置事件-1.png'],
       },
       {
@@ -1931,7 +1929,7 @@ const muXinLanConfig: CharacterCGConfig = {
         id: 'womb_regression_training',
         name: '胎内回归拘束调教事件',
         description:
-          '你被沐心岚击败，茉荆将小腹打开，将你包裹进他的体内，他分出体内的机械拟态触手，按摩调教着你的乳头和小穴，你甚至感受到了在母亲子宫内的安心感，逐渐放下了反抗的心思（在被茉荆放出来之后，会认为茉荆是自己的母亲）',
+          '你被沐心岚击败，茉荆将小腹打开，将你包裹进他的体内，他分出体内的机械拟态触手，按摩调教着你的乳头和小穴，你甚至感受到了在父亲生殖腔内的安心感，逐渐放下了反抗的心思（在被茉荆放出来之后，会认为茉荆是自己的父亲）',
         images: ['沐芯兰-胎内回归拘束调教事件-1.png', '沐芯兰-胎内回归拘束调教事件-2.png'],
       },
     ],
@@ -2140,11 +2138,7 @@ const aiLinHaiDeConfig: CharacterCGConfig = {
         id: 'bondage_yuri_discipline',
         name: '艾伦海德-捆绑BL调教事件',
         description: '你被艾伦海德击败，作为处罚你需要被龟甲缚并且在床上玩弄。',
-        images: [
-          '艾琳海德-捆绑BL调教事件-1.png',
-          '艾琳海德-捆绑BL调教-2事件.png',
-          '艾琳海德-捆绑BL调教事件事件-2.png',
-        ],
+        images: ['艾琳海德-捆绑BL调教事件-1.png', '艾琳海德-捆绑BL调教-2事件.png', '艾琳海德-捆绑BL调教事件事件-2.png'],
       },
       {
         id: 'armpit_domination',
@@ -2263,7 +2257,7 @@ const luNaLaKeDiSiConfig: CharacterCGConfig = {
       {
         id: 'womb_regression',
         name: '（稀有事件）卢纳拉克缇斯-胎内回归事件',
-        description: '你被卢纳击败，作为惩罚，他把你缩小塞入子宫，时间快进在一个月后，你会作为他的乳魔男儿降生。',
+        description: '你被卢纳击败，作为惩罚，他把你缩小塞入生殖腔，时间快进在一个月后，你会作为他的乳魔男儿降生。',
         images: ['露娜拉克缇丝-胎内回归事件.png'],
         probability: 0.04,
       },
@@ -2372,7 +2366,7 @@ const luNaLaKeDiSiConfig: CharacterCGConfig = {
       {
         id: 'womb_regression_female',
         name: '（稀有事件）卢纳拉克缇斯-胎内回归事件',
-        description: '你被卢纳击败，作为惩罚，他把你缩小塞入子宫，时间快进在一个月后，你会作为他的乳魔男儿降生。',
+        description: '你被卢纳击败，作为惩罚，他把你缩小塞入生殖腔，时间快进在一个月后，你会作为他的乳魔男儿降生。',
         images: ['露娜拉克缇丝-胎内回归事件.png'],
         probability: 0.03,
       },
@@ -2730,7 +2724,8 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_male_stinky_feet_brainwash',
         name: '弗林-臭脚洗脑事件',
-        description: '你被弗林击败，作为惩罚他让你站起来，然后自己坐着抬起脚贴在你的脸上，让你闻着他的脚进行无接触射精。',
+        description:
+          '你被弗林击败，作为惩罚他让你站起来，然后自己坐着抬起脚贴在你的脸上，让你闻着他的脚进行无接触射精。',
         images: ['芙莲-臭脚洗脑事件.png', '芙莲-臭脚洗脑事件-2.png', '芙莲-臭脚洗脑事件-3.png'],
       },
       {
@@ -2757,7 +2752,8 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_male_public_taming',
         name: '弗林-公开驯服事件',
-        description: '你被弗林击败，作为惩罚他把你带到教室，让你戴上项圈狗链，像狗一样臣服拜倒在他脚下，周围的同学议论纷纷，让你感受到无止境的羞耻与一直莫名的爽感。',
+        description:
+          '你被弗林击败，作为惩罚他把你带到教室，让你戴上项圈狗链，像狗一样臣服拜倒在他脚下，周围的同学议论纷纷，让你感受到无止境的羞耻与一直莫名的爽感。',
         images: ['芙莲-公开驯服事件.png'],
       },
       {
@@ -2772,12 +2768,17 @@ const fuLianConfig: CharacterCGConfig = {
         name: '弗林-乖宝宝原味带锁打屁股事件',
         description:
           '你被弗林击败，作为惩罚他给你的头上套上他的原味内裤或给你的嘴里塞进他的原味白袜，给你的肉棒锁进粉色贞操锁里，让你趴在他的腿上，像一个做错事的婴儿一样被他拍打屁股惩罚，他用ASMR低语要求你做他的“乖宝宝”。',
-        images: ['芙莲-乖宝宝原味带锁打屁股事件.png', '芙莲-乖宝宝原味带锁打屁股事件-2.png', '芙莲-乖宝宝原味带锁打屁股事件-3.png'],
+        images: [
+          '芙莲-乖宝宝原味带锁打屁股事件.png',
+          '芙莲-乖宝宝原味带锁打屁股事件-2.png',
+          '芙莲-乖宝宝原味带锁打屁股事件-3.png',
+        ],
       },
       {
         id: 'fulian_male_anal_development',
         name: '弗林-后庭开发事件',
-        description: '你被弗林击败，他将假阳具安装在自己高跟鞋的鞋跟上，用高跟鞋上的肉片抽插你的后穴，最后让你闻着弗林的后穴撸管射精。',
+        description:
+          '你被弗林击败，他将假阳具安装在自己高跟鞋的鞋跟上，用高跟鞋上的肉片抽插你的后穴，最后让你闻着弗林的后穴撸管射精。',
         images: ['芙莲-后庭开发事件.png'],
       },
       {
@@ -2796,13 +2797,15 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_male_kick_neuter',
         name: '弗林-雄化金蹴事件',
-        description: '你被弗林击败，作为惩罚你被弗林用那双神圣的白靴，毫不留情地踢击男性的胯下。一边踢一边温柔地数落：“这种肮脏的东西，精灵大人不需要哦~踢坏了也没关系吧？”',
+        description:
+          '你被弗林击败，作为惩罚你被弗林用那双神圣的白靴，毫不留情地踢击男性的胯下。一边踢一边温柔地数落：“这种肮脏的东西，精灵大人不需要哦~踢坏了也没关系吧？”',
         images: ['芙莲-去雄金蹴事件.png'],
       },
       {
         id: 'fulian_male_thigh_choke',
         name: '弗林-腿夹窒息事件',
-        description: '你被弗林击败，作为惩罚你被迫跪在地上，他坐在椅子上用大腿夹着你的脖子，你在他紧致、有肉感的大腿中被夹至濒临窒息。',
+        description:
+          '你被弗林击败，作为惩罚你被迫跪在地上，他坐在椅子上用大腿夹着你的脖子，你在他紧致、有肉感的大腿中被夹至濒临窒息。',
         images: ['芙莲-腿夹窒息事件.png', '芙莲-腿夹窒息事件-2.png'],
       },
       {
@@ -2827,7 +2830,8 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_male_life_liquid_kiss',
         name: '弗林-生命之液爱吻事件',
-        description: '你被弗林击败，作为惩罚他伸出灵活的舌头对你的肉棒和后穴进行深度爱吻，将唾液作为“生命之液”灌入你的后穴，这种唾液含有强烈的催情与服从成分。',
+        description:
+          '你被弗林击败，作为惩罚他伸出灵活的舌头对你的肉棒和后穴进行深度爱吻，将唾液作为“生命之液”灌入你的后穴，这种唾液含有强烈的催情与服从成分。',
         images: ['芙莲-生命之液爱吻事件.png', '芙莲-生命之液爱吻事件-2.png'],
       },
     ],
@@ -2835,13 +2839,15 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_male_fallen_sex_victory',
         name: '弗林-沉沦性爱战胜事件',
-        description: '你战胜了弗林，作为奖励他将对你进行侍奉式地彻底沉沦的至高做爱，承认你是更高等的存在，并全心全意地服侍你。',
+        description:
+          '你战胜了弗林，作为奖励他将对你进行侍奉式地彻底沉沦的至高做爱，承认你是更高等的存在，并全心全意地服侍你。',
         images: ['芙莲-沉沦性爱战胜事件.png', '芙莲-沉沦性爱战胜事件-2.png'],
       },
       {
         id: 'fulian_male_reverse_ride_footjob_victory',
         name: '弗林-反仰做爱后足交温存战胜事件',
-        description: '你战胜了弗林，作为奖励他以反仰体位与你做爱，你射精后，他将小穴掰开任精液流出，同时对你以反坐体位足交，进行性爱后的温存。',
+        description:
+          '你战胜了弗林，作为奖励他以反仰体位与你做爱，你射精后，他将小穴掰开任精液流出，同时对你以反坐体位足交，进行性爱后的温存。',
         images: ['芙莲-反仰做爱后足交温存战胜事件.png'],
       },
       {
@@ -2863,7 +2869,8 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_female_dogeza_spank',
         name: '弗林-士下座打屁股事件',
-        description: '你被弗林击败，作为惩罚，他让你做出士下座跪倒臣服姿势，他用手不断拍打你的屁股，“要保持这个姿势不要乱动哦~否则惩罚加倍~”弗林坏笑道。',
+        description:
+          '你被弗林击败，作为惩罚，他让你做出士下座跪倒臣服姿势，他用手不断拍打你的屁股，“要保持这个姿势不要乱动哦~否则惩罚加倍~”弗林坏笑道。',
         images: ['芙莲-士下座打屁股事件.png', '芙莲-士下座打屁股事件-2.png'],
       },
       {
@@ -2875,7 +2882,8 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_female_baby_event',
         name: '弗林-乖宝宝事件',
-        description: '你被弗林击败，作为惩罚你坐在他身上，你被带上奶嘴和尿裤，头被他的乳房夹住，一边ASMR轻语，对你说道“乖宝宝”，一边为你手淫。',
+        description:
+          '你被弗林击败，作为惩罚你坐在他身上，你被带上奶嘴和尿裤，头被他的乳房夹住，一边ASMR轻语，对你说道“乖宝宝”，一边为你手淫。',
         images: ['芙莲-乖宝宝事件.png', '芙莲-乖宝宝事件-2.png', '芙莲-乖宝宝事件-3.png'],
       },
       {
@@ -2894,19 +2902,22 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_female_public_class_humiliation',
         name: '弗林-课堂公开羞辱事件',
-        description: '你被弗林击败，作为惩罚他命令你脱光衣服只剩靴子，让你坐到满是学生的教室的讲台上，他掐着你的脖子，你在窒息失神中公开漏尿。',
+        description:
+          '你被弗林击败，作为惩罚他命令你脱光衣服只剩靴子，让你坐到满是学生的教室的讲台上，他掐着你的脖子，你在窒息失神中公开漏尿。',
         images: ['芙莲-课堂公开羞辱事件.png'],
       },
       {
         id: 'fulian_female_cow_training',
         name: '弗林-母牛调教事件',
-        description: '你被弗林击败，作为惩罚他把你的胸部变大，并且让你穿上奶牛头饰、铃铛项圈和口球，在教室对你进行羞耻调教。',
+        description:
+          '你被弗林击败，作为惩罚他把你的胸部变大，并且让你穿上奶牛头饰、铃铛项圈和口球，在教室对你进行羞耻调教。',
         images: ['芙莲-母牛调教事件.png', '芙莲-母牛调教事件-2.png'],
       },
       {
         id: 'fulian_female_bondage_tame',
         name: '弗林-捆绑驯服事件',
-        description: '你被弗林击败，作为惩罚你被他带上项圈，牵上狗绳并捆绑起来，他坐在你的身上将脚放在你的嘴里对你进行调教。',
+        description:
+          '你被弗林击败，作为惩罚你被他带上项圈，牵上狗绳并捆绑起来，他坐在你的身上将脚放在你的嘴里对你进行调教。',
         images: ['芙莲-捆绑驯服事件.png', '芙莲-捆绑驯服事件-2.png'],
       },
       {
@@ -2931,19 +2942,22 @@ const fuLianConfig: CharacterCGConfig = {
       {
         id: 'fulian_female_kick_crotch',
         name: '弗林-踢裆金蹴事件',
-        description: '你被弗林击败，作为惩罚，他用那双神圣的白靴，毫不留情地踢击你的胯下。一边踢一边温柔地数落：“这种不洁的小穴，精灵大人不需要哦~踢坏了也没关系吧？”',
+        description:
+          '你被弗林击败，作为惩罚，他用那双神圣的白靴，毫不留情地踢击你的胯下。一边踢一边温柔地数落：“这种不洁的小穴，精灵大人不需要哦~踢坏了也没关系吧？”',
         images: ['芙莲-踢裆金蹴事件.png', '芙莲-踢裆金蹴事件-2.png', '芙莲-踢裆金蹴事件-3.png'],
       },
       {
         id: 'fulian_female_step_on_back',
         name: '弗林-踩踩背事件',
-        description: '你被弗林击败，作为惩罚他命令你摆出士下座臣服姿势，将衣服脱下叠整齐地摆在旁边，他用脚踩在你的背上，若你稍有松懈、姿势不标准，他就立刻用调教鞭抽打你的后背。',
+        description:
+          '你被弗林击败，作为惩罚他命令你摆出士下座臣服姿势，将衣服脱下叠整齐地摆在旁边，他用脚踩在你的背上，若你稍有松懈、姿势不标准，他就立刻用调教鞭抽打你的后背。',
         images: ['芙莲-踩踩背事件.png'],
       },
       {
         id: 'fulian_female_blindfold_pheromone',
         name: '弗林-蒙眼蜜穴荷尔蒙事件',
-        description: '你被弗林击败，作为惩罚他将你的眼睛蒙上，在一片黑暗中你的嗅觉更加敏锐，他用大腿夹住你的头，让你只能闻到他蜜穴的气息，你在这种淫骚的蜜穴荷尔蒙中沉沦。',
+        description:
+          '你被弗林击败，作为惩罚他将你的眼睛蒙上，在一片黑暗中你的嗅觉更加敏锐，他用大腿夹住你的头，让你只能闻到他蜜穴的气息，你在这种淫骚的蜜穴荷尔蒙中沉沦。',
         images: ['芙莲-蒙眼蜜穴荷尔蒙事件.png', '芙莲-蒙眼蜜穴荷尔蒙事件-2.png'],
       },
     ],
@@ -2968,13 +2982,21 @@ const heiQiQingWenConfig: CharacterCGConfig = {
         id: 'heiqi_asmr_airplane_cup_milking_male',
         name: '黑崎晴雷-AMSR飞机杯榨取事件',
         description: '你被黑崎晴雷击败，作为惩罚他会给你套上飞机杯榨取精液，同时用龙尾插入后庭并舔舐你的耳道。',
-        images: ['黑崎晴雯-AMSR飞机杯榨取事件-1.png', '黑崎晴雯-AMSR飞机杯榨取事件-2.png', '黑崎晴雯-AMSR飞机杯榨取事件-3.png'],
+        images: [
+          '黑崎晴雯-AMSR飞机杯榨取事件-1.png',
+          '黑崎晴雯-AMSR飞机杯榨取事件-2.png',
+          '黑崎晴雯-AMSR飞机杯榨取事件-3.png',
+        ],
       },
       {
         id: 'heiqi_thread_edge_milking_male',
         name: '黑崎晴雷-丝线寸止榨精事件',
         description: '你被黑崎晴雷击败，作为惩罚他会用丝线缠绕肉棒反复寸止榨精，让你只能在乞求中承受刺激。',
-        images: ['黑崎晴雯-丝线寸止榨精事件-1.png', '黑崎晴雯-丝线寸止榨精事件-2.png', '黑崎晴雯-丝线寸止榨精事件-3.png'],
+        images: [
+          '黑崎晴雯-丝线寸止榨精事件-1.png',
+          '黑崎晴雯-丝线寸止榨精事件-2.png',
+          '黑崎晴雯-丝线寸止榨精事件-3.png',
+        ],
       },
       {
         id: 'heiqi_night_raid_milking_male',
@@ -2986,7 +3008,11 @@ const heiQiQingWenConfig: CharacterCGConfig = {
         id: 'heiqi_tail_urethra_invasion_male',
         name: '黑崎晴雷-尾交尿道侵犯事件',
         description: '你被黑崎晴雷击败，作为惩罚他会用尾巴缠绕并抽撸你的肉棒，同时以尾尖侵犯你的尿道。',
-        images: ['黑崎晴雯-尾交尿道侵犯事件-1.png', '黑崎晴雯-尾交尿道侵犯事件-2.png', '黑崎晴雯-尾交尿道侵犯事件-3.png'],
+        images: [
+          '黑崎晴雯-尾交尿道侵犯事件-1.png',
+          '黑崎晴雯-尾交尿道侵犯事件-2.png',
+          '黑崎晴雯-尾交尿道侵犯事件-3.png',
+        ],
       },
       {
         id: 'heiqi_humiliation_milking_male',
@@ -3220,7 +3246,11 @@ const mingRiXiangConfig: CharacterCGConfig = {
         id: 'asuka_triple_vibe_anal_male',
         name: '明日郎-三重跳蛋假阳具后穴榨精事件',
         description: '你被明日郎击败，作为惩罚他会安装多重跳蛋并穿戴可伸缩阳具刺激你的后穴完成榨精。',
-        images: ['明日香-三重跳蛋假阳具后穴榨精事件-1.png', '明日香-三重跳蛋假阳具后穴榨精事件-2.png', '明日香-三重跳蛋假阳具后穴榨精事件-3.png'],
+        images: [
+          '明日香-三重跳蛋假阳具后穴榨精事件-1.png',
+          '明日香-三重跳蛋假阳具后穴榨精事件-2.png',
+          '明日香-三重跳蛋假阳具后穴榨精事件-3.png',
+        ],
       },
       {
         id: 'asuka_glove_lube_handjob_male',
@@ -3232,7 +3262,11 @@ const mingRiXiangConfig: CharacterCGConfig = {
         id: 'asuka_feetcup_edging_male',
         name: '明日郎-特制飞机杯足压迫寸止事件',
         description: '你被明日郎击败，作为惩罚他会以双足操控电流飞机杯持续寸止并抑制你射精。',
-        images: ['明日香-特制飞机杯足压迫寸止事件-1.png', '明日香-特制飞机杯足压迫寸止事件-2.png', '明日香-特制飞机杯足压迫寸止事件-3.png'],
+        images: [
+          '明日香-特制飞机杯足压迫寸止事件-1.png',
+          '明日香-特制飞机杯足压迫寸止事件-2.png',
+          '明日香-特制飞机杯足压迫寸止事件-3.png',
+        ],
       },
       {
         id: 'asuka_feetcup_milking_male',
@@ -3307,7 +3341,11 @@ const mingRiXiangConfig: CharacterCGConfig = {
         id: 'asuka_ar_asmr_masturbation_female',
         name: '明日郎-AR设备ASMR电子自慰事件',
         description: '你被明日郎击败，作为惩罚他会通过AR设备与ASMR洗脑诱导你主动自慰并重塑性癖。',
-        images: ['明日香-AR设备ASMR电子自慰事件-1.png', '明日香-AR设备ASMR电子自慰事件-2.png', '明日香-AR设备ASMR电子自慰事件-3.png'],
+        images: [
+          '明日香-AR设备ASMR电子自慰事件-1.png',
+          '明日香-AR设备ASMR电子自慰事件-2.png',
+          '明日香-AR设备ASMR电子自慰事件-3.png',
+        ],
       },
       {
         id: 'asuka_turtle_shell_dildo_female',
@@ -3443,7 +3481,8 @@ const weiSiPeiLaConfig: CharacterCGConfig = {
       {
         id: 'vespera_back_entry_victory_male',
         name: '维斯佩罗-后入事件',
-        description: '你战胜维斯佩罗，绕到维斯佩罗身后，无视其无力的抵抗，强行用肉棒从身后插入维斯佩罗小穴，并进行内射。',
+        description:
+          '你战胜维斯佩罗，绕到维斯佩罗身后，无视其无力的抵抗，强行用肉棒从身后插入维斯佩罗小穴，并进行内射。',
         images: ['薇丝佩菈-后入事件1.png', '薇丝佩菈-后入事件2.png', '薇丝佩菈-后入事件3.png'],
       },
       {
@@ -3477,7 +3516,8 @@ const weiSiPeiLaConfig: CharacterCGConfig = {
       {
         id: 'vespera_pheromone_masturbation_female',
         name: '维斯佩罗-费洛蒙自慰事件',
-        description: '你输给了维斯佩罗，并在战斗中吸入过多维斯佩罗散发出的发情信息素，于是在维斯佩罗的诱导下开始进行自慰。',
+        description:
+          '你输给了维斯佩罗，并在战斗中吸入过多维斯佩罗散发出的发情信息素，于是在维斯佩罗的诱导下开始进行自慰。',
         images: ['薇丝佩菈-费洛蒙自慰事件.png'],
       },
       {
@@ -3501,7 +3541,8 @@ const weiSiPeiLaConfig: CharacterCGConfig = {
       {
         id: 'vespera_triangle_horse_female',
         name: '维斯佩罗-三角木马事件',
-        description: '你输给了维斯佩罗，被维斯佩罗带到隐秘的小屋并被全裸放在三角木马上。维斯佩罗随后也坐了上来，并抓着你在三角木马上摩擦。',
+        description:
+          '你输给了维斯佩罗，被维斯佩罗带到隐秘的小屋并被全裸放在三角木马上。维斯佩罗随后也坐了上来，并抓着你在三角木马上摩擦。',
         images: ['薇丝佩菈-三角木马事件.png'],
       },
       {
@@ -3525,7 +3566,8 @@ const weiSiPeiLaConfig: CharacterCGConfig = {
       {
         id: 'vespera_defeat_wedding_female',
         name: '维斯佩罗-战败婚礼事件',
-        description: '在决定攻受的战斗中，你输给了维斯佩罗，你穿上婚纱跪倒在维斯佩罗脚下，维斯佩罗用手抬起你的下巴，要你宣誓成为他的所有物。',
+        description:
+          '在决定攻受的战斗中，你输给了维斯佩罗，你穿上婚纱跪倒在维斯佩罗脚下，维斯佩罗用手抬起你的下巴，要你宣誓成为他的所有物。',
         images: ['薇丝佩菈-战败婚礼事件.png'],
       },
     ],
@@ -3545,7 +3587,8 @@ const weiSiPeiLaConfig: CharacterCGConfig = {
       {
         id: 'vespera_wedding_victory_female',
         name: '维斯佩罗-战胜婚礼事件',
-        description: '在决定谁是攻谁是受的战斗中，你赢得了胜利，维斯佩罗回到平时状态，并穿上特制的露胸婚纱，掀起裙子害羞的站到你面前。',
+        description:
+          '在决定谁是攻谁是受的战斗中，你赢得了胜利，维斯佩罗回到平时状态，并穿上特制的露胸婚纱，掀起裙子害羞的站到你面前。',
         images: ['薇丝佩菈-战胜婚礼事件.png'],
       },
     ],
@@ -3649,7 +3692,12 @@ const aiLiSiWenTeConfig: CharacterCGConfig = {
         id: 'alice_footjob_male',
         name: '阿尔伯特温特-足交事件',
         description: '你被阿尔伯特温特击败，作为惩罚他会用双足对你进行足交榨取。',
-        images: ['爱丽丝温特-足交事件-1.png', '爱丽丝温特-足交事件-2.png', '爱丽丝温特-足交事件-3.png', '爱丽丝温特-足交事件-4.png'],
+        images: [
+          '爱丽丝温特-足交事件-1.png',
+          '爱丽丝温特-足交事件-2.png',
+          '爱丽丝温特-足交事件-3.png',
+          '爱丽丝温特-足交事件-4.png',
+        ],
       },
     ],
     victory: [
@@ -3663,7 +3711,12 @@ const aiLiSiWenTeConfig: CharacterCGConfig = {
         id: 'alice_blowjob_victory_male',
         name: '阿尔伯特温特-口交事件',
         description: '你战胜了阿尔伯特温特，作为奖励他会为你提供口交服务。',
-        images: ['爱丽丝温特-口交事件-1.png', '爱丽丝温特-口交事件-2.png', '爱丽丝温特-口交事件3.png', '爱丽丝温特-口交事件4.png'],
+        images: [
+          '爱丽丝温特-口交事件-1.png',
+          '爱丽丝温特-口交事件-2.png',
+          '爱丽丝温特-口交事件3.png',
+          '爱丽丝温特-口交事件4.png',
+        ],
       },
     ],
   },
@@ -3696,13 +3749,23 @@ const aiLiSiWenTeConfig: CharacterCGConfig = {
         id: 'alice_cow_transformation_female',
         name: '阿尔伯特温特-乳牛化事件',
         description: '你被阿尔伯特温特击败，作为惩罚他会对你进行乳牛化改造。',
-        images: ['爱丽丝-乳牛化事件-1.png', '爱丽丝-乳牛化事件-2.png', '爱丽丝-乳牛化事件-3.png', '爱丽丝-乳牛化事件-4.png'],
+        images: [
+          '爱丽丝-乳牛化事件-1.png',
+          '爱丽丝-乳牛化事件-2.png',
+          '爱丽丝-乳牛化事件-3.png',
+          '爱丽丝-乳牛化事件-4.png',
+        ],
       },
       {
         id: 'alice_mountain_press_female',
         name: '阿尔伯特温特-泰山压顶事件',
         description: '你被阿尔伯特温特击败，作为惩罚他会以泰山压顶般的方式压制你。',
-        images: ['爱丽丝-泰山压顶事件-1.png', '爱丽丝-泰山压顶事件-2.png', '爱丽丝-泰山压顶事件-3.png', '爱丽丝-泰山压顶事件-4.png'],
+        images: [
+          '爱丽丝-泰山压顶事件-1.png',
+          '爱丽丝-泰山压顶事件-2.png',
+          '爱丽丝-泰山压顶事件-3.png',
+          '爱丽丝-泰山压顶事件-4.png',
+        ],
       },
       {
         id: 'alice_dual_dragon_female',
@@ -3720,7 +3783,12 @@ const aiLiSiWenTeConfig: CharacterCGConfig = {
         id: 'alice_multi_grind_female',
         name: '阿尔伯特温特-众磨蒂事件',
         description: '你被阿尔伯特温特击败，作为惩罚他会让你承受众磨蒂式的持续挑逗与压迫。',
-        images: ['爱丽丝-众磨蒂事件-1.png', '爱丽丝-众磨蒂事件-2.png', '爱丽丝-众磨蒂事件-3.png', '爱丽丝-众磨蒂事件-4.png'],
+        images: [
+          '爱丽丝-众磨蒂事件-1.png',
+          '爱丽丝-众磨蒂事件-2.png',
+          '爱丽丝-众磨蒂事件-3.png',
+          '爱丽丝-众磨蒂事件-4.png',
+        ],
       },
     ],
     victory: [
@@ -3763,13 +3831,15 @@ const naTaShaSiMaiErConfig: CharacterCGConfig = {
       {
         id: 'natasha_stocking_footjob_defeat_male',
         name: '纳塔利斯-丝袜足交事件',
-        description: '你被纳塔利斯击败，作为惩罚他给你的肉棒套上裹满润滑液的白丝，用穿着白丝的玉足套弄你的肉，给你进行丝袜足交，强烈的磨砂感让你的肉棒十分敏感，最终爆射。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他给你的肉棒套上裹满润滑液的白丝，用穿着白丝的玉足套弄你的肉，给你进行丝袜足交，强烈的磨砂感让你的肉棒十分敏感，最终爆射。',
         images: ['丝袜足交事件-1.png', '丝袜足交事件-2.png'],
       },
       {
         id: 'natasha_stocking_handjob_defeat_male',
         name: '纳塔利斯-丝责事件',
-        description: '你被纳塔利斯击败，作为惩罚他给你的肉棒套上裹满润滑液的白丝，用手给你套弄肉棒，进行丝袜责，强烈的磨砂感让你的肉棒十分敏感，最终爆射。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他给你的肉棒套上裹满润滑液的白丝，用手给你套弄肉棒，进行丝袜责，强烈的磨砂感让你的肉棒十分敏感，最终爆射。',
         images: ['丝责事件-1.png'],
       },
       {
@@ -3781,7 +3851,8 @@ const naTaShaSiMaiErConfig: CharacterCGConfig = {
       {
         id: 'natasha_crotch_kick_defeat_male',
         name: '纳塔利斯-踢裆事件',
-        description: '你被纳塔利斯击败，作为惩罚他命令你怪怪站好，然后用脚狠狠地踢你的裆部，在强烈的疼痛感作用下，你最终爆射。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他命令你怪怪站好，然后用脚狠狠地踢你的裆部，在强烈的疼痛感作用下，你最终爆射。',
         images: ['踢裆事件-1.png', '踢裆事件-2.png'],
       },
       {
@@ -3801,7 +3872,8 @@ const naTaShaSiMaiErConfig: CharacterCGConfig = {
       {
         id: 'natasha_facesit_nipple_defeat_male',
         name: '纳塔利斯-坐脸乳头责事件',
-        description: '你被纳塔利斯击败，作为惩罚他脱下内裤坐到你的脸上，用手指刺激你的乳头，最终在未触碰肉棒的情况下，你被调教至高潮。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他脱下内裤坐到你的脸上，用手指刺激你的乳头，最终在未触碰肉棒的情况下，你被调教至高潮。',
         images: ['坐脸乳头责事件-1.png', '坐脸乳头责事件-2.png'],
       },
       {
@@ -3824,25 +3896,29 @@ const naTaShaSiMaiErConfig: CharacterCGConfig = {
       {
         id: 'natasha_butt_hook_spanking_victory_male',
         name: '纳塔利斯-股钩打屁股战胜事件',
-        description: '你战胜了纳塔利斯，作为奖励你给他的菊穴带上钩子，让他跪在地上，狠狠拍打他的屁股，疼痛感让他挣扎，但一挣扎，菊穴里的股钩就会刺激他的菊穴，如此调教，他最终高潮了。',
+        description:
+          '你战胜了纳塔利斯，作为奖励你给他的菊穴带上钩子，让他跪在地上，狠狠拍打他的屁股，疼痛感让他挣扎，但一挣扎，菊穴里的股钩就会刺激他的菊穴，如此调教，他最终高潮了。',
         images: ['股钩打屁股战胜事件-1.png'],
       },
       {
         id: 'natasha_gaming_chair_victory_male',
         name: '纳塔利斯-电竞椅调教战胜事件',
-        description: '你战胜了纳塔利斯，作为奖励你将他绑在他那改造过的调教电竞椅上，用AV震动棒刺激他的小穴、跳蛋刺激乳头，改造的机械手挠乳头、脚心、腋下，在多重刺激下，他最终高潮。',
+        description:
+          '你战胜了纳塔利斯，作为奖励你将他绑在他那改造过的调教电竞椅上，用AV震动棒刺激他的小穴、跳蛋刺激乳头，改造的机械手挠乳头、脚心、腋下，在多重刺激下，他最终高潮。',
         images: ['电竞椅调教战胜事件-1.png', '电竞椅调教战胜事件-2.png'],
       },
       {
         id: 'natasha_park_spanking_victory_male',
         name: '纳塔利斯-打屁股公园战胜事件',
-        description: '你战胜了纳塔利斯，作为奖励你命令他脱下内裤像狗一样跪在公园地上，用手狠狠拍打他的屁股，对他进行公开调教。',
+        description:
+          '你战胜了纳塔利斯，作为奖励你命令他脱下内裤像狗一样跪在公园地上，用手狠狠拍打他的屁股，对他进行公开调教。',
         images: ['打屁股公园战胜事件-1.png'],
       },
       {
         id: 'natasha_urination_victory_male',
         name: '纳塔利斯-排尿战胜事件',
-        description: '你战胜了纳塔利斯，作为奖励你命令他摆出小狗撒尿的姿势在你面前撒尿，在羞愤与尴尬的情感下他一开始尿不出来，尴尬了段时间终于当着你的面尿了出来。',
+        description:
+          '你战胜了纳塔利斯，作为奖励你命令他摆出小狗撒尿的姿势在你面前撒尿，在羞愤与尴尬的情感下他一开始尿不出来，尴尬了段时间终于当着你的面尿了出来。',
         images: ['排尿战胜事件-1.png', '排尿战胜事件-2.png'],
       },
       {
@@ -3860,7 +3936,8 @@ const naTaShaSiMaiErConfig: CharacterCGConfig = {
       {
         id: 'natasha_facesit_nipple_defeat_female',
         name: '纳塔利斯-坐脸乳头责事件',
-        description: '你被纳塔利斯击败，作为惩罚他脱下内裤坐在你的脸上，给你夹上乳环，还用手指刺激你的乳头，最终在没接触你小穴的情况下让你到达了高潮。。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他脱下内裤坐在你的脸上，给你夹上乳环，还用手指刺激你的乳头，最终在没接触你小穴的情况下让你到达了高潮。。',
         images: ['坐脸乳头责事件-1.png'],
       },
       {
@@ -3886,25 +3963,29 @@ const naTaShaSiMaiErConfig: CharacterCGConfig = {
       {
         id: 'natasha_stocking_gag_bell_dildo_defeat_female',
         name: '纳塔利斯-丝袜塞嘴乳铃自慰棒事件',
-        description: '你被纳塔利斯击败，作为惩罚他将白丝袜脱下塞进你的嘴里，给你戴上乳铃、眼罩，拿自慰棒抽插你的小穴，最终你高潮了。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他将白丝袜脱下塞进你的嘴里，给你戴上乳铃、眼罩，拿自慰棒抽插你的小穴，最终你高潮了。',
         images: ['丝袜塞嘴乳铃自慰棒事件-1.png'],
       },
       {
         id: 'natasha_dogeza_spanking_step_defeat_female',
         name: '纳塔利斯-打屁股士下座踩踏事件',
-        description: '你被纳塔利斯击败，作为惩罚他命令你脱光衣服叠放整齐，摆出士下座的姿势在地上跪好，他用脚踹、踩你的屁股和背部，对你进行羞辱调教。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他命令你脱光衣服叠放整齐，摆出士下座的姿势在地上跪好，他用脚踹、踩你的屁股和背部，对你进行羞辱调教。',
         images: ['打屁股士下座踩踏事件-1.png', '打屁股士下座踩踏事件-2.png'],
       },
       {
         id: 'natasha_ear_licking_defeat_female',
         name: '纳塔利斯-舔耳事件',
-        description: '你被纳塔利斯击败，作为惩罚他将你推倒在电竞椅上，对你进行辱骂与甜美偶像音的双重asmr调教，双重asmr里直白的辱骂与虚情假意的偶像音交替进行，同时还用手指扣挖你的小穴，最终你高潮失神。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他将你推倒在电竞椅上，对你进行辱骂与甜美偶像音的双重asmr调教，双重asmr里直白的辱骂与虚情假意的偶像音交替进行，同时还用手指扣挖你的小穴，最终你高潮失神。',
         images: ['舔耳事件-1.png', '舔耳事件-2.png'],
       },
       {
         id: 'natasha_bondage_defeat_female',
         name: '纳塔利斯-拘束调教事件',
-        description: '你被纳塔利斯击败，作为惩罚他给你戴上眼罩、口枷、乳夹，拿绳索绑住你的双手吊在天上，一边刺激你的乳头，一边拿假阳具抽插你的小穴，最终你高潮失神。',
+        description:
+          '你被纳塔利斯击败，作为惩罚他给你戴上眼罩、口枷、乳夹，拿绳索绑住你的双手吊在天上，一边刺激你的乳头，一边拿假阳具抽插你的小穴，最终你高潮失神。',
         images: ['拘束调教事件-1.png', '拘束调教事件-2.png'],
       },
       {
@@ -3920,13 +4001,15 @@ const naTaShaSiMaiErConfig: CharacterCGConfig = {
       {
         id: 'natasha_gaming_chair_victory_female',
         name: '纳塔利斯-电竞椅调教战胜事件',
-        description: '你战胜了纳塔利斯，作为奖励你将他绑在他那改造过的调教电竞椅上，用AV震动棒刺激他的小穴、跳蛋刺激乳头，改造的机械手挠乳头、脚心、腋下，在多重刺激下，他最终高潮。',
+        description:
+          '你战胜了纳塔利斯，作为奖励你将他绑在他那改造过的调教电竞椅上，用AV震动棒刺激他的小穴、跳蛋刺激乳头，改造的机械手挠乳头、脚心、腋下，在多重刺激下，他最终高潮。',
         images: ['电竞椅调教战胜事件-1.png', '电竞椅调教战胜事件-2.png'],
       },
       {
         id: 'natasha_urination_victory_female',
         name: '纳塔利斯-排尿战胜事件',
-        description: '你战胜了纳塔利斯，作为奖励你命令他摆出小狗撒尿的姿势在你面前撒尿，在羞愤与尴尬的情感下他一开始尿不出来，尴尬了段时间终于当着你的面尿了出来。',
+        description:
+          '你战胜了纳塔利斯，作为奖励你命令他摆出小狗撒尿的姿势在你面前撒尿，在羞愤与尴尬的情感下他一开始尿不出来，尴尬了段时间终于当着你的面尿了出来。',
         images: ['排尿战胜事件-1.png'],
       },
       {
