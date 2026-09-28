@@ -1,0 +1,194 @@
+// 鸢汀的藤蔓帝国 — MVU 变量 Schema
+// Zod 4 规范：不使用 .strict()/.passthrough()，根字段不用 .optional()
+// 使用 z.coerce.number()，transform 用 _.clamp，使用 .prefault()
+
+// -- 境界推导 -------------------------------------------------
+// 每个大境界有固定单级上限，精神力含量达到上限时自动清空、小阶+1
+// 小阶达10时自动清空为1、晋升下一大境界，上限×10
+const REALMS = [
+  { name: '萌芽期', limit: 100         },
+  { name: '扎根期', limit: 1000        },
+  { name: '攀援期', limit: 10000       },
+  { name: '播散期', limit: 100000      },
+  { name: '成荫期', limit: 1000000     },
+  { name: '蔽日期', limit: 10000000    },
+  { name: '天罗期', limit: 100000000   },
+  { name: '归元期', limit: 1000000000  },
+];
+
+function getRealmLimit(realmName: string): number {
+  const realm = REALMS.find(r => r.name === realmName);
+  return realm ? realm.limit : 100;
+}
+
+function getNextRealm(realmName: string): string {
+  const idx = REALMS.findIndex(r => r.name === realmName);
+  return idx >= 0 && idx < REALMS.length - 1 ? REALMS[idx + 1].name : realmName;
+}
+
+// 从当前境界和段位出发，根据精神力含量计算晋升
+// 每次跨过单级上限就清空并升段，段位>9则进位到下一境界
+function deriveRealm(spirit: number, currentRealm: string, currentStage: number): { realm: string; stage: number; spiritRemainder: number; limit: number } {
+  let realm = currentRealm;
+  let stage = currentStage;
+  let remaining = spirit;
+
+  while (remaining >= getRealmLimit(realm)) {
+    remaining -= getRealmLimit(realm);
+    stage++;
+    if (stage > 9) {
+      stage = 1;
+      realm = getNextRealm(realm);
+    }
+  }
+
+  return { realm, stage, spiritRemainder: remaining, limit: getRealmLimit(realm) };
+}
+
+// 部位子 Schema（10个部位复用）
+const 部位Schema = z.object({
+  乳头:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  胸部:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  口腔:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  阴茎:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  阴囊:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  尿道:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  后穴:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  生殖道:  z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  肉珠:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  肉唇:    z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+  生殖腔:  z.object({ 开发度: z.coerce.number().min(0).prefault(0), 改造阶段: z.string().prefault('未改造') }).prefault({}),
+}).prefault({});
+
+// 猎物阈限子 Schema
+const 阈限Schema = z.object({
+  动摇:     z.coerce.number().min(0).prefault(100),
+  顺从:     z.coerce.number().min(0).prefault(300),
+  依恋:     z.coerce.number().min(0).prefault(700),
+  臣服:     z.coerce.number().min(0).prefault(1500),
+  崩坏:     z.coerce.number().min(0).prefault(200),
+  乳头改造:   z.coerce.number().min(0).prefault(150),
+  胸部改造:   z.coerce.number().min(0).prefault(200),
+  口腔改造:   z.coerce.number().min(0).prefault(250),
+  阴茎改造:   z.coerce.number().min(0).prefault(200),
+  阴囊改造:   z.coerce.number().min(0).prefault(250),
+  尿道改造:   z.coerce.number().min(0).prefault(350),
+  后穴改造:   z.coerce.number().min(0).prefault(300),
+  生殖道改造: z.coerce.number().min(0).prefault(400),
+  肉珠改造:   z.coerce.number().min(0).prefault(100),
+  肉唇改造:   z.coerce.number().min(0).prefault(150),
+  生殖腔改造: z.coerce.number().min(0).prefault(600),
+}).prefault({});
+
+// 单个猎物 Schema
+const 猎物Schema = z.object({
+  // 基本信息
+  精神力品质: z.string().prefault('4S'),
+  ABO性别:  z.string().prefault('Alpha'),
+  职业:     z.string().prefault(''),
+  性格特征: z.string().prefault(''),
+  身体素质: z.string().prefault(''),
+  // 专属阈限
+  阈限: 阈限Schema,
+  // 当前状态
+  捕获状态: z.string().prefault('拘束中'),
+  臣服进度: z.coerce.number().min(0).prefault(0),
+  臣服阶段: z.string().prefault('抵抗'),
+  崩坏值:   z.coerce.number().min(0).prefault(0),
+  淫荡度:   z.coerce.number().min(0).prefault(0),
+  高潮值:   z.coerce.number().min(0).prefault(0),
+  高潮阈值: z.coerce.number().min(1).prefault(100),
+  // 各部位
+  部位: 部位Schema,
+  // 产出记录
+  最近产出品质:   z.string().prefault('低'),
+  累计贡献精神力: z.coerce.number().min(0).prefault(0),
+  捕获日期: z.string().prefault(''),
+  }).transform(data => {
+    // 自动派生臣服阶段：比较臣服进度与各阶段阈限
+    // 阶段可回退（如从动摇退回抵抗），但"臣服"后不再回退
+    const STAGE_ORDER = ["抵抗", "动摇", "顺从", "依恋", "臣服"];
+    const currentIdx = STAGE_ORDER.indexOf(data.臣服阶段);
+    let stage = "抵抗";
+    if (data.臣服进度 >= data.阈限.臣服) stage = "臣服";
+    else if (data.臣服进度 >= data.阈限.依恋) stage = "依恋";
+    else if (data.臣服进度 >= data.阈限.顺从) stage = "顺从";
+    else if (data.臣服进度 >= data.阈限.动摇) stage = "动摇";
+    // 如果当前已是"臣服"阶段，不会回退
+    const finalStage = currentIdx === 4 ? "臣服" : stage;
+    return { ...data, 臣服阶段: finalStage };
+  }).prefault({});
+
+// ========= 根 Schema =========
+export const Schema = z.object({
+  蔺鸢汀: z.object({
+    精神力含量:   z.coerce.number().min(0).prefault(0),
+    _当前大境界: z.string().prefault('萌芽期'),
+    _当前小阶:   z.coerce.number().transform(v => _.clamp(v, 1, 9)).prefault(1),
+    _精神力上限:  z.coerce.number().min(0).prefault(100),
+    已解锁能力:   z.array(z.string()).prefault(['基础插入']),
+    已控制星球数: z.coerce.number().min(1).prefault(1),
+    本体位置:     z.string().prefault('鸢汀星域·核心'),
+  }).transform(data => {
+    const { realm, stage, spiritRemainder, limit } = deriveRealm(
+      data.精神力含量,
+      data._当前大境界,
+      data._当前小阶
+    );
+    return {
+      ...data,
+      精神力含量: spiritRemainder,
+      _当前大境界: realm,
+      _当前小阶: stage,
+      _精神力上限: limit,
+    };
+  }).prefault({}),
+
+  林昊: z.object({
+    精神力品质:   z.string().prefault('5S'),
+    淫荡度:       z.coerce.number().min(0).prefault(0),
+    高潮值:       z.coerce.number().min(0).prefault(0),
+    高潮阈值:     z.coerce.number().min(1).prefault(50),
+    部位:         部位Schema,
+    当前状态:     z.string().prefault('待命中'),
+    最近产出品质: z.string().prefault('极佳'),
+  }).prefault({}),
+
+  猎物库: z.record(z.string().describe('猎物名'), 猎物Schema).prefault({}),
+
+  猎物库统计: z.object({
+    总捕获数:   z.coerce.number().min(1).prefault(1),
+    已臣服数:   z.coerce.number().min(1).prefault(1),
+    已报废数:   z.coerce.number().min(0).prefault(0),
+    当前活跃数: z.coerce.number().min(0).prefault(1),
+  }).prefault({}),
+
+  调教场景: z.object({
+    当前手段:     z.string().prefault(''),
+    当前轮次:     z.coerce.number().min(0).prefault(0),
+    猎物: z.record(z.string().describe('猎物名'), z.object({
+      当前高潮值:   z.coerce.number().min(0).prefault(0),
+      本次高潮强度: z.string().prefault('中'),
+      本轮臣服收益: z.coerce.number().prefault(0),
+      本轮崩坏风险: z.coerce.number().prefault(0),
+      本轮淫荡增量: z.coerce.number().prefault(0),
+      部位: z.record(z.string().describe('部位名'), z.object({
+        本轮开发程度: z.coerce.number().prefault(0),
+      }).prefault({})).prefault({}),
+    }).prefault({})).prefault({}),
+  }).prefault({}),
+
+  世界状态: z.object({
+    当前时间: z.string().prefault('星历501年/01/01'),
+    当前地点: z.string().prefault('鸢汀星域·本体核心区'),
+    当前目标: z.string().prefault(''),
+    近期事件: z.array(z.string()).prefault([]),
+  }).prefault({}),
+
+  副本进度: z.record(z.string().describe('副本名'), z.object({
+    解锁状态: z.string().prefault('未解锁'),
+    解锁条件: z.string().prefault(''),
+  }).prefault({})).prefault({}),
+});
+
+export type Schema = z.output<typeof Schema>;

@@ -1,0 +1,1110 @@
+/* ==========================================================================
+   《触角》论坛 · 样式
+
+   调性：暖色旧纸 + 朱砂印章。论坛是平民的界面，与状态栏的军用调性刻意割裂。
+   所有质感都是纯 CSS 做出来的，不依赖任何外部图片——外部图会挂、
+   内联 base64 会把代码块撑爆，而 SVG 噪点 + 渐变 + 描边能做出同样的旧纸感。
+
+   手法参考：酒馆数据/角色卡/寻找鬼男 的状态栏（噪点纸、渐变描边、字族分工）、
+             酒馆数据/角色卡/寻找伪男 的小手机（文字头像、语义化配色变量）。
+   ========================================================================== */
+
+.tc-forum {
+  /* ---- 纸与墨 ---- */
+  --f-paper: #f2e8d5;
+  --f-paper-2: #ece0c9;
+  --f-surface: #fbf6ea;
+  --f-sunken: #f6efe0;
+  --f-ink: #2e2820;
+  --f-ink-dim: #7d7365;
+  --f-ink-faint: #a2988a;
+  --f-hair: #d8cbaf;
+  --f-hair-soft: #e6dcc6;
+
+  /* ---- 朱砂与金 ---- */
+  --f-seal: #b8422c;
+  --f-seal-hi: #d4573c;
+  --f-seal-bg: #f7e4de;
+  --f-gold: #b8893f;
+  --f-gold-hi: #d4a95c;
+  --f-gold-bg: #faf1dc;
+
+  /* ---- 链接与昵称 ---- */
+  --f-link: #4a6f82;
+  --f-link-hi: #35606f;
+
+  /* ---- 字族分工 ---- */
+  --f-serif: 'Songti SC', 'STSong', 'Noto Serif SC', 'SimSun', serif;
+  --f-sans: 'Sarasa Mono SC', 'Noto Sans SC', -apple-system, 'Microsoft YaHei', sans-serif;
+  --f-mono: 'Consolas', 'Courier New', ui-monospace, monospace;
+
+  /* ---- 尺度 ---- */
+  --f-r: 3px;
+  --f-shadow: 0 1px 2px rgba(74, 58, 34, 0.06);
+  --f-shadow-lift: 0 3px 10px rgba(74, 58, 34, 0.13);
+
+  position: relative;
+  font-family: var(--f-sans);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--f-ink);
+  background:
+    linear-gradient(178deg, var(--f-paper) 0%, var(--f-paper-2) 55%, var(--f-paper) 100%);
+  border: 1px solid var(--f-hair);
+  border-radius: var(--f-r);
+  overflow: hidden;
+  max-width: 100%;
+  user-select: text;
+  box-shadow: var(--f-shadow);
+}
+
+.tc-forum * {
+  box-sizing: border-box;
+}
+
+/* 旧纸颗粒。SVG 噪点内联成 data URI，不请求任何外部资源 */
+.tc-forum::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  opacity: 0.055;
+}
+
+/* 内容层要浮在噪点之上 */
+.tc-forum > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   顶部
+   ========================================================================== */
+
+.tc-f-top {
+  background: linear-gradient(180deg, var(--f-surface), var(--f-sunken));
+  border-bottom: 2px solid var(--f-gold);
+  padding: 12px 52px 10px 16px;
+  position: relative;
+}
+
+/* 右上角挂自己的头像，一眼知道现在是哪个号在看 */
+.tc-f-topright {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+}
+
+/* 顶栏上方一条渐隐金线 */
+.tc-f-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--f-gold-hi) 20%, var(--f-gold-hi) 80%, transparent);
+  opacity: 0.55;
+}
+
+.tc-f-title {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.tc-f-logo {
+  font-family: var(--f-serif);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--f-gold);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.tc-f-logo .fa-solid,
+.tc-f-logo .fa-bug {
+  font-size: 15px;
+  margin-right: 3px;
+}
+
+.tc-f-sub {
+  font-family: var(--f-serif);
+  font-size: 12px;
+  color: var(--f-ink-dim);
+  letter-spacing: 0.08em;
+}
+
+.tc-f-welcome {
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--f-ink-dim);
+  font-family: var(--f-serif);
+}
+
+.tc-f-welcome b {
+  color: var(--f-seal);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   导航
+   ========================================================================== */
+
+.tc-f-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1px;
+  background: linear-gradient(180deg, var(--f-surface), var(--f-sunken));
+  border-bottom: 1px solid var(--f-hair);
+  padding: 0 12px;
+}
+
+.tc-f-navbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--f-ink-dim);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+  white-space: nowrap;
+}
+
+.tc-f-navbtn i {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.tc-f-navbtn:hover {
+  color: var(--f-ink);
+  background: rgba(184, 137, 63, 0.07);
+}
+
+.tc-f-navbtn--on {
+  color: var(--f-seal);
+  border-bottom-color: var(--f-seal);
+  font-weight: 600;
+}
+
+/* 导航右侧的一组图标按钮，与板块切换拉开距离 */
+.tc-f-navsep,
+.tc-f-navgap {
+  flex: 1;
+  min-width: 8px;
+}
+
+.tc-f-navbtn--icon {
+  padding: 7px 8px;
+}
+
+/* 刷新：点下去图标转一圈，不然点了没反馈，不知道刷没刷 */
+.tc-f-navbtn--spin i {
+  animation: tc-f-spin 0.7s linear infinite;
+}
+
+@keyframes tc-f-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 退出：整站唯一带点警示色的按钮，免得误点 */
+.tc-f-navbtn--quit:hover {
+  color: var(--f-seal);
+  background: rgba(184, 66, 44, 0.09);
+}
+
+/* ==========================================================================
+   公告
+   ========================================================================== */
+
+.tc-f-notice {
+  margin: 11px 13px 0;
+  padding: 9px 12px;
+  background: var(--f-gold-bg);
+  border: 1px dashed var(--f-gold);
+  border-radius: var(--f-r);
+  font-size: 12px;
+}
+
+.tc-f-notice-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--f-serif);
+  color: var(--f-gold);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+}
+
+/* 公告条：每条点得进去 */
+.tc-f-notice-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--f-link);
+  background: none;
+  border: none;
+  padding: 2px 0 2px 14px;
+  position: relative;
+  cursor: pointer;
+  line-height: 1.75;
+}
+
+.tc-f-notice-row::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: var(--f-gold);
+  font-weight: 700;
+}
+
+.tc-f-notice-row:hover {
+  color: var(--f-seal);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   热门话题：编号榜
+   ========================================================================== */
+
+.tc-f-topics {
+  margin: 11px 13px 0;
+  padding: 9px 12px 8px;
+  background: var(--f-surface);
+  border: 1px solid var(--f-hair-soft);
+  border-radius: var(--f-r);
+  box-shadow: var(--f-shadow);
+}
+
+.tc-f-topic-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  width: 100%;
+  padding: 3px 0;
+  font-family: inherit;
+  font-size: 12.5px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--f-ink);
+  line-height: 1.6;
+}
+
+.tc-f-topic-row:hover .tc-f-topic-text {
+  color: var(--f-seal);
+  text-decoration: underline;
+}
+
+/* 榜上名次：1、2、3 用朱砂，之后褪成灰 */
+.tc-f-topic-rank {
+  flex: 0 0 15px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--f-ink-faint);
+  text-align: right;
+}
+
+.tc-f-topic-rank--top {
+  color: var(--f-seal);
+}
+
+.tc-f-topic-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tc-f-topic-heat {
+  flex: 0 0 auto;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--f-ink-faint);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.tc-f-topic-heat i {
+  color: var(--f-seal-hi);
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   区块标题
+   ========================================================================== */
+
+.tc-f-secthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 13px 13px 7px;
+  gap: 8px;
+}
+
+.tc-f-secttitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--f-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--f-gold);
+  letter-spacing: 0.07em;
+}
+
+.tc-f-secttitle i {
+  font-size: 11px;
+}
+
+.tc-f-sectnum {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--f-ink-faint);
+}
+
+/* ==========================================================================
+   帖子列表
+   ========================================================================== */
+
+.tc-f-list {
+  padding: 0 13px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tc-f-post {
+  display: flex;
+  gap: 10px;
+  background: var(--f-surface);
+  border: 1px solid var(--f-hair-soft);
+  border-left: 3px solid var(--f-hair-soft);
+  border-radius: var(--f-r);
+  padding: 10px 12px 9px;
+  cursor: pointer;
+  box-shadow: var(--f-shadow);
+  transition: border-left-color 0.14s, transform 0.14s, box-shadow 0.14s, background 0.14s;
+}
+
+.tc-f-post:hover {
+  border-left-color: var(--f-gold);
+  background: #fdf9f0;
+  transform: translateX(2px);
+  box-shadow: var(--f-shadow-lift);
+}
+
+/* 有角标的帖子左边描红，扫一眼就分得出重点 */
+.tc-f-post--hot {
+  border-left-color: var(--f-seal);
+}
+
+.tc-f-post-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.tc-f-post-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tc-f-post-title {
+  font-family: var(--f-serif);
+  font-weight: 700;
+  color: var(--f-ink);
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.tc-f-post:hover .tc-f-post-title {
+  color: var(--f-link-hi);
+}
+
+/* [置顶][爆][热][新] 角标 */
+.tc-f-mark {
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--f-sans);
+  line-height: 1.5;
+  padding: 0 4px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--f-ink-faint);
+}
+
+.tc-f-mark--置顶 {
+  background: var(--f-gold);
+}
+
+.tc-f-mark--爆 {
+  background: var(--f-seal);
+}
+
+.tc-f-mark--热 {
+  background: var(--f-seal-hi);
+}
+
+.tc-f-mark--新 {
+  background: #7a8f72;
+}
+
+.tc-f-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--f-ink-dim);
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.tc-f-post-meta .tc-f-time {
+  color: var(--f-ink-faint);
+}
+
+.tc-f-excerpt {
+  color: var(--f-ink-dim);
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tc-f-post-foot {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 6px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--f-ink-faint);
+}
+
+.tc-f-post-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tc-f-post-foot i {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.tc-f-post-foot .tc-f-stat-hot i {
+  color: var(--f-seal-hi);
+  opacity: 1;
+}
+
+.tc-f-post-topics {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-left: auto;
+}
+
+/* ==========================================================================
+   分类标签（帖子自身的「话题」字段，与热门话题榜无关）
+   ========================================================================== */
+
+.tc-f-topic-chip {
+  font-family: inherit;
+  font-size: 10.5px;
+  color: var(--f-link);
+  background: #eaf1f4;
+  border: 1px solid #cfe0e6;
+  border-radius: 9px;
+  padding: 0 7px;
+  line-height: 1.7;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+.tc-f-topic-chip:hover {
+  background: var(--f-link);
+  color: #fff;
+}
+
+/* ==========================================================================
+   头像
+   ========================================================================== */
+
+.tc-f-av {
+  flex: 0 0 auto;
+  width: var(--av-w);
+  height: var(--av-w);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-serif);
+  font-weight: 700;
+  color: var(--av-fg);
+  background:
+    radial-gradient(circle at 28% 12%, rgba(255, 255, 255, 0.55), transparent 62%),
+    var(--av-bg);
+  border: 1px solid var(--av-fg);
+  border-radius: 22%;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.35), 0 1px 2px rgba(74, 58, 34, 0.1);
+  line-height: 1;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   详情
+   ========================================================================== */
+
+.tc-f-detail {
+  padding: 11px 13px 14px;
+}
+
+.tc-f-detail-head {
+  background: var(--f-surface);
+  border: 1px solid var(--f-hair-soft);
+  border-radius: var(--f-r);
+  padding: 12px 14px 10px;
+  box-shadow: var(--f-shadow);
+}
+
+.tc-f-detail-title {
+  font-family: var(--f-serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 7px;
+  color: var(--f-ink);
+}
+
+.tc-f-detail-who {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 9px;
+}
+
+.tc-f-detail-who .tc-f-name {
+  font-family: var(--f-serif);
+  font-weight: 700;
+  color: var(--f-link);
+  font-size: 13px;
+}
+
+.tc-f-detail-who .tc-f-when {
+  font-size: 11px;
+  color: var(--f-ink-faint);
+}
+
+.tc-f-detail-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--f-serif);
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--f-ink);
+}
+
+.tc-f-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid var(--f-hair-soft);
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   评论
+   ========================================================================== */
+
+.tc-f-comments {
+  margin-top: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.tc-f-comment {
+  background: var(--f-surface);
+  border: 1px solid var(--f-hair-soft);
+  border-radius: var(--f-r);
+  padding: 9px 11px;
+  box-shadow: var(--f-shadow);
+}
+
+.tc-f-comment-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+}
+
+.tc-f-comment-name {
+  font-family: var(--f-serif);
+  color: var(--f-link);
+  font-weight: 700;
+}
+
+.tc-f-comment-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--f-ink);
+}
+
+/* 楼层号：#1 #2 这样，靠 mono 字体显得工整 */
+.tc-f-floor {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: var(--f-ink-faint);
+  flex: 0 0 auto;
+}
+
+.tc-f-comment-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+  padding-left: 35px;
+}
+
+.tc-f-mini {
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--f-ink-faint);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.12s;
+}
+
+.tc-f-mini i {
+  font-size: 10px;
+}
+
+.tc-f-mini:hover {
+  color: var(--f-seal);
+}
+
+.tc-f-mini--on {
+  color: var(--f-seal);
+}
+
+.tc-f-replies {
+  margin-top: 7px;
+  margin-left: 35px;
+  padding-left: 10px;
+  border-left: 2px solid var(--f-hair-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tc-f-reply {
+  background: var(--f-sunken);
+  border-radius: var(--f-r);
+  padding: 6px 9px;
+  font-size: 12px;
+}
+
+.tc-f-replybox {
+  margin-top: 8px;
+  margin-left: 35px;
+}
+
+/* ==========================================================================
+   标记：楼主 / 我
+   ========================================================================== */
+
+.tc-f-op,
+.tc-f-me {
+  font-size: 10px;
+  line-height: 1.6;
+  padding: 0 4px;
+  border-radius: 2px;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.tc-f-op {
+  background: var(--f-gold-bg);
+  color: var(--f-gold);
+  border: 1px solid var(--f-gold);
+}
+
+.tc-f-me {
+  background: var(--f-seal-bg);
+  color: var(--f-seal);
+  border: 1px solid var(--f-seal);
+}
+
+/* ==========================================================================
+   按钮
+   ========================================================================== */
+
+.tc-f-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 5px 12px;
+  border: 1px solid var(--f-hair);
+  border-radius: var(--f-r);
+  background: linear-gradient(180deg, var(--f-surface), var(--f-sunken));
+  color: var(--f-ink);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.tc-f-btn i {
+  font-size: 11px;
+}
+
+.tc-f-btn:hover {
+  border-color: var(--f-gold);
+  color: var(--f-gold);
+}
+
+.tc-f-btn--primary {
+  background: linear-gradient(180deg, var(--f-seal-hi), var(--f-seal));
+  border-color: var(--f-seal);
+  color: #fff;
+  font-weight: 600;
+}
+
+.tc-f-btn--primary:hover {
+  background: linear-gradient(180deg, var(--f-seal), #9e3722);
+  color: #fff;
+}
+
+.tc-f-btn--liked {
+  color: var(--f-seal);
+  border-color: var(--f-seal);
+  background: var(--f-seal-bg);
+}
+
+.tc-f-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ==========================================================================
+   表单
+   ========================================================================== */
+
+.tc-f-field {
+  margin-bottom: 10px;
+}
+
+.tc-f-label {
+  display: block;
+  font-size: 12px;
+  color: var(--f-ink-dim);
+  margin-bottom: 4px;
+}
+
+.tc-f-input,
+.tc-f-textarea,
+.tc-f-select {
+  width: 100%;
+  font-family: var(--f-sans);
+  font-size: 13px;
+  padding: 7px 10px;
+  border: 1px solid var(--f-hair);
+  border-radius: var(--f-r);
+  background: var(--f-surface);
+  color: var(--f-ink);
+  resize: vertical;
+}
+
+.tc-f-textarea {
+  font-family: var(--f-serif);
+  line-height: 1.7;
+}
+
+.tc-f-input:focus,
+.tc-f-textarea:focus,
+.tc-f-select:focus {
+  outline: none;
+  border-color: var(--f-gold);
+  box-shadow: 0 0 0 2px rgba(184, 137, 63, 0.13);
+}
+
+.tc-f-textarea {
+  min-height: 92px;
+}
+
+/* ==========================================================================
+   私信与消息区
+   ========================================================================== */
+
+.tc-f-mail {
+  background: var(--f-surface);
+  border: 1px solid var(--f-hair-soft);
+  border-radius: var(--f-r);
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  box-shadow: var(--f-shadow);
+}
+
+.tc-f-mail--unread {
+  border-left: 3px solid var(--f-seal);
+  background: #fdf7f2;
+}
+
+.tc-f-mail-from {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--f-link);
+  font-family: var(--f-serif);
+  font-weight: 700;
+  font-size: 12.5px;
+  margin-bottom: 4px;
+}
+
+.tc-f-mail-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--f-ink);
+}
+
+/* 消息区页签 */
+.tc-f-tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid var(--f-hair);
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   我的主页
+   ========================================================================== */
+
+.tc-f-profile {
+  background: var(--f-surface);
+  border: 1px solid var(--f-hair-soft);
+  border-radius: var(--f-r);
+  padding: 14px 16px 12px;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  box-shadow: var(--f-shadow);
+}
+
+.tc-f-profile-name {
+  font-family: var(--f-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--f-ink);
+  line-height: 1.3;
+}
+
+.tc-f-profile-sub {
+  font-size: 12px;
+  color: var(--f-ink-dim);
+  margin-top: 2px;
+}
+
+.tc-f-profile-sub .tc-f-rank {
+  color: var(--f-gold);
+  font-weight: 600;
+}
+
+.tc-f-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 12px;
+  padding: 11px 16px 12px;
+  background: var(--f-surface);
+  border: 1px solid var(--f-hair-soft);
+  border-radius: var(--f-r);
+  box-shadow: var(--f-shadow);
+}
+
+.tc-f-stat {
+  text-align: center;
+}
+
+.tc-f-stat-num {
+  font-family: var(--f-mono);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--f-seal);
+  line-height: 1.25;
+}
+
+.tc-f-stat-label {
+  font-size: 11px;
+  color: var(--f-ink-dim);
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   公告详情
+   ========================================================================== */
+
+.tc-f-announce-from {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--f-gold);
+  font-weight: 700;
+  font-family: var(--f-serif);
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   通用
+   ========================================================================== */
+
+.tc-f-empty {
+  text-align: center;
+  color: var(--f-ink-faint);
+  padding: 30px 12px;
+  font-size: 12px;
+  font-family: var(--f-serif);
+}
+
+.tc-f-badge {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  line-height: 1.6;
+  padding: 0 5px;
+  border-radius: 8px;
+  background: var(--f-seal);
+  color: #fff;
+  margin-left: 4px;
+}
+
+.tc-f-note {
+  font-size: 11px;
+  color: var(--f-ink-faint);
+  margin-top: 8px;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   页脚
+   ========================================================================== */
+
+.tc-f-foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 11px 13px 13px;
+  border-top: 1px solid var(--f-hair-soft);
+  font-size: 11px;
+  color: var(--f-ink-faint);
+  font-family: var(--f-serif);
+  letter-spacing: 0.04em;
+}
+
+.tc-f-foot i {
+  font-size: 10px;
+  color: var(--f-gold);
+  opacity: 0.7;
+}
+
+.tc-f-foot-sep {
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   各处新加的小件
+   ========================================================================== */
+
+/* 设页：昵称输入框前面挂一眼头像，改完名字立刻能看到颜色变了 */
+.tc-f-nickrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 发帖页：发布前那一行「以谁的身份、发到哪个板块」 */
+.tc-f-signrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2px 0 9px;
+  font-size: 12px;
+  color: var(--f-ink-dim);
+}
+
+.tc-f-boardtag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--f-gold);
+  border-radius: 999px;
+  background: var(--f-gold-bg);
+  color: var(--f-gold);
+  font-size: 11px;
+}
+
+/* 消息条：右侧标出这是哪一类 */
+.tc-f-mail-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--f-ink-faint);
+  letter-spacing: 0.06em;
+}
+
+/* 未读圆点。比整条变色更克制，也不会让时间地点都跟着变红 */
+.tc-f-mail-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--f-seal);
+  box-shadow: 0 0 0 2px rgba(184, 66, 44, 0.16);
+  flex: none;
+}

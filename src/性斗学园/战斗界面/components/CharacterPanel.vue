@@ -1,0 +1,901 @@
+<template>
+  <div class="character-panel" :class="{ 'is-enemy': isEnemy }">
+    <div class="panel-inner">
+      <!-- 角色名 -->
+      <div class="character-name">{{ character.name }}</div>
+      <div v-if="isEnemy && traitItems.length > 0" class="trait-list">
+        <span
+          v-for="trait in traitItems"
+          :key="trait.id"
+          class="trait-badge-wrap"
+          @pointerenter="handleTraitPointerEnter(trait, $event)"
+          @pointerleave="handleTraitPointerLeave(trait, $event)"
+          @pointerdown="handleTraitPointerDown(trait, $event)"
+          @pointerup="handleTraitPointerUp(trait, $event)"
+          @pointercancel="handleTraitPointerCancel(trait)"
+        >
+          <span
+            class="trait-badge"
+            :class="`rarity-${trait.rarity.toLowerCase()}`"
+            :aria-describedby="activeTraitId === trait.id ? `trait-description-${trait.id}` : undefined"
+          >
+            {{ trait.name }}
+          </span>
+          <span
+            v-if="activeTraitId === trait.id"
+            :id="`trait-description-${trait.id}`"
+            class="trait-tooltip"
+            role="tooltip"
+          >
+            {{ trait.description }}
+          </span>
+        </span>
+      </div>
+
+      <!-- 头像与悬停属性 -->
+      <div class="avatar-container" :class="combatReaction ? `reaction-${combatReaction.type}` : undefined">
+        <div class="avatar-glow" :class="isEnemy ? 'glow-enemy' : 'glow-player'"></div>
+
+        <img
+          :src="character.avatarUrl"
+          :alt="character.name"
+          class="avatar-image"
+          :class="{
+            'avatar-enemy': isEnemy,
+            'avatar-player': !isEnemy,
+            'avatar-pulse': turnState.phase === 'processing' && !isEnemy,
+            'avatar-scale': turnState.phase === 'enemyAction' && isEnemy,
+            'avatar-climax':
+              turnState.phase === 'climaxResolution' && turnState.climaxTarget === (isEnemy ? 'enemy' : 'player'),
+          }"
+          @error="handleImageError"
+        />
+
+        <div
+          v-if="combatReaction"
+          :key="combatReaction.key"
+          class="combat-reaction"
+          :class="`reaction-visual-${combatReaction.type}`"
+          aria-hidden="true"
+        >
+          <span class="reaction-ring"></span>
+          <span class="reaction-burst"></span>
+          <span class="reaction-label">{{ combatReaction.label }}</span>
+        </div>
+
+        <!-- 移动端预告图标 -->
+        <div v-if="isEnemy && turnState.phase === 'playerInput' && enemyIntention" class="mobile-warning">
+          <span>!</span>
+        </div>
+
+        <!-- 属性悬停面板 -->
+        <div class="stats-overlay">
+          <div class="overlay-title">详细属性</div>
+          <StatsPanel :stats="character.stats" :status-effects="character.statusEffects" compact />
+        </div>
+      </div>
+
+      <!-- 状态条 -->
+      <div class="bars-container">
+        <div class="resource-bar-slot">
+          <ProgressBar
+            :value="character.stats.currentEndurance"
+            :max="character.stats.maxEndurance"
+            color="green"
+            label="体力"
+            :show-value="true"
+            :icon="activityIcon"
+          />
+          <span
+            v-for="popup in staminaPopups"
+            :key="popup.id"
+            class="resource-popup stamina"
+            :class="popup.delta > 0 ? 'gain' : 'loss'"
+            :style="{
+              '--popup-offset': `${popup.offset}px`,
+              '--popup-delay': `${popup.delay}ms`,
+            }"
+            aria-hidden="true"
+          >
+            {{ popup.delta > 0 ? '+' : '' }}{{ popup.delta }}
+          </span>
+        </div>
+        <div class="resource-bar-slot">
+          <ProgressBar
+            :value="character.stats.currentPleasure"
+            :max="character.stats.maxPleasure"
+            color="pink"
+            label="快感"
+            :show-value="true"
+            :icon="heartIcon"
+          />
+          <span
+            v-for="popup in pleasurePopups"
+            :key="popup.id"
+            class="resource-popup pleasure"
+            :class="popup.delta > 0 ? 'gain' : 'loss'"
+            :style="{
+              '--popup-offset': `${popup.offset}px`,
+              '--popup-delay': `${popup.delay}ms`,
+            }"
+            aria-hidden="true"
+          >
+            {{ popup.delta > 0 ? '+' : '' }}{{ popup.delta }}
+          </span>
+        </div>
+        <div class="climax-bar">
+          <ProgressBar
+            :value="character.stats.climaxCount"
+            :max="character.stats.maxClimaxCount"
+            color="purple"
+            label="高潮"
+            :show-value="true"
+            :icon="zapIcon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed, onBeforeUnmount, ref } from 'vue';
+import { getRandomImageUrl } from '../constants';
+import type { EnemyTraitDefinition } from '../traitSystem';
+import type { Character, Skill, TurnState } from '../types';
+import ProgressBar from './ProgressBar.vue';
+import StatsPanel from './StatsPanel.vue';
+
+interface ResourcePopup {
+  id: number;
+  resource: 'stamina' | 'pleasure';
+  delta: number;
+  delay: number;
+  offset: number;
+}
+
+interface CharacterCombatReaction {
+  key: number;
+  type: 'item-use' | 'item-hit' | 'status-block' | 'status-self-hit';
+  label: string;
+}
+
+type TraitDisplayItem = Pick<EnemyTraitDefinition, 'id' | 'name' | 'rarity' | 'description'>;
+
+const props = defineProps<{
+  character: Character;
+  isEnemy: boolean;
+  turnState: TurnState;
+  enemyIntention: Skill | null;
+  resourcePopups?: ResourcePopup[];
+  combatReaction?: CharacterCombatReaction | null;
+  traitItems?: TraitDisplayItem[];
+}>();
+
+const traitItems = computed(() => props.traitItems ?? []);
+const activeTraitId = ref<string | null>(null);
+let traitLongPressTimer: ReturnType<typeof setTimeout> | null = null;
+let traitLongPressTriggered = false;
+
+function clearTraitLongPressTimer(): void {
+  if (traitLongPressTimer !== null) {
+    clearTimeout(traitLongPressTimer);
+    traitLongPressTimer = null;
+  }
+}
+
+function handleTraitPointerEnter(trait: TraitDisplayItem, event: PointerEvent): void {
+  if (event.pointerType === 'mouse') activeTraitId.value = trait.id;
+}
+
+function handleTraitPointerLeave(trait: TraitDisplayItem, event: PointerEvent): void {
+  clearTraitLongPressTimer();
+  if (event.pointerType === 'mouse' && activeTraitId.value === trait.id) activeTraitId.value = null;
+}
+
+function handleTraitPointerDown(trait: TraitDisplayItem, event: PointerEvent): void {
+  clearTraitLongPressTimer();
+  traitLongPressTriggered = false;
+  if (event.pointerType !== 'touch' && event.pointerType !== 'pen') return;
+  if (activeTraitId.value !== trait.id) activeTraitId.value = null;
+
+  traitLongPressTimer = setTimeout(() => {
+    traitLongPressTriggered = true;
+    activeTraitId.value = trait.id;
+    traitLongPressTimer = null;
+  }, 450);
+}
+
+function handleTraitPointerUp(trait: TraitDisplayItem, event: PointerEvent): void {
+  const wasTouch = event.pointerType === 'touch' || event.pointerType === 'pen';
+  clearTraitLongPressTimer();
+  if (wasTouch && !traitLongPressTriggered && activeTraitId.value === trait.id) activeTraitId.value = null;
+}
+
+function handleTraitPointerCancel(trait: TraitDisplayItem): void {
+  clearTraitLongPressTimer();
+  if (activeTraitId.value === trait.id && !traitLongPressTriggered) activeTraitId.value = null;
+}
+
+onBeforeUnmount(() => {
+  clearTraitLongPressTimer();
+});
+
+const staminaPopups = computed(() => (props.resourcePopups ?? []).filter(popup => popup.resource === 'stamina'));
+const pleasurePopups = computed(() => (props.resourcePopups ?? []).filter(popup => popup.resource === 'pleasure'));
+
+// 图片加载失败标记
+const imageLoadError = ref(false);
+
+// 处理图片加载失败
+const handleImageError = (event: Event) => {
+  const img = event.target as HTMLImageElement;
+  if (imageLoadError.value) return; // 避免无限循环
+
+  imageLoadError.value = true;
+
+  // 降级使用随机图片
+  img.src = getRandomImageUrl();
+};
+
+// 图标SVG
+const activityIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`;
+const heartIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>`;
+const zapIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
+</script>
+
+<style lang="scss" scoped>
+.character-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  max-width: 45%;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .character-panel {
+    max-width: 24rem;
+  }
+}
+
+.panel-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.character-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.75rem;
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.2;
+  max-width: 100%;
+
+  // 小屏手机（<375px）
+  @media (max-width: 374px) {
+    font-size: 0.75rem;
+  }
+
+  // 中等手机（375px-640px）
+  @media (min-width: 375px) and (max-width: 640px) {
+    font-size: 0.875rem;
+  }
+
+  // 平板（641px-1023px）
+  @media (min-width: 641px) and (max-width: 1023px) {
+    font-size: 1rem;
+  }
+
+  // 桌面（>=1024px）
+  @media (min-width: 1024px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.trait-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 100%;
+  margin: -0.25rem 0 0.55rem;
+  overflow: visible;
+}
+
+.trait-badge-wrap {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  touch-action: manipulation;
+}
+
+.trait-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.65rem;
+  padding: 0.28rem 0.62rem;
+  border: 1px solid transparent;
+  border-radius: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: nowrap;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  .trait-badge-wrap:hover & {
+    transform: translateY(-1px);
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.rarity-b {
+  border-color: rgba(96, 165, 250, 0.8);
+  background: rgba(30, 64, 175, 0.78);
+  color: #dbeafe;
+}
+
+.rarity-a {
+  border-color: rgba(192, 132, 252, 0.82);
+  background: rgba(107, 33, 168, 0.8);
+  color: #f3e8ff;
+}
+
+.rarity-s {
+  border-color: rgba(250, 204, 21, 0.9);
+  background: rgba(146, 64, 14, 0.84);
+  color: #fef3c7;
+  box-shadow: 0 0.2rem 0.7rem rgba(245, 158, 11, 0.25);
+}
+
+.trait-tooltip {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 0.45rem);
+  left: 50%;
+  width: max-content;
+  max-width: min(17rem, calc(100vw - 2rem));
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.35rem;
+  background: rgba(15, 23, 42, 0.96);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.45;
+  white-space: normal;
+  text-align: left;
+  pointer-events: none;
+  transform: translateX(-50%);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
+
+  @media (min-width: 1024px) {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .trait-badge {
+    min-height: 1.55rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .trait-tooltip {
+    max-width: min(16rem, calc(100vw - 1.5rem));
+  }
+}
+
+// ========== 名称标签 ==========
+.name-badge {
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 20;
+  max-width: 100%;
+  position: relative;
+
+  @media (min-width: 1024px) {
+    padding: 0.35rem 1rem;
+  }
+}
+
+.badge-player {
+  background: rgba(6, 78, 59, 0.6);
+  color: #a5f3fc;
+}
+
+.badge-enemy {
+  background: rgba(76, 5, 25, 0.6);
+  color: #fecdd3;
+}
+
+.name-text {
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (min-width: 1024px) {
+    font-size: 1rem;
+  }
+}
+
+.intention-hint {
+  display: none;
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  color: #fef08a;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  animation: pulse 2s ease-in-out infinite;
+  align-items: center;
+  white-space: nowrap;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+}
+
+.intention-icon {
+  margin-right: 0.25rem;
+}
+
+// ========== 头像 ==========
+.avatar-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3; // 匹配 832x1216 比例
+  max-width: 180px;
+  margin-bottom: 0.5rem;
+
+  @media (min-width: 1024px) {
+    max-width: 260px;
+    margin-bottom: 0.9rem;
+  }
+
+  @media (min-width: 1024px) and (min-height: 900px) {
+    max-width: 300px;
+  }
+
+  &:hover {
+    .avatar-glow {
+      opacity: 0.4;
+    }
+
+    .avatar-image {
+      filter: brightness(0.5) blur(2px);
+    }
+
+    .stats-overlay {
+      opacity: 1;
+    }
+  }
+
+  &.reaction-item-use,
+  &.reaction-item-hit {
+    animation: itemReactionPulse 0.62s ease-out;
+  }
+
+  &.reaction-status-block {
+    animation: statusBlockedShake 0.54s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  }
+
+  &.reaction-status-self-hit {
+    animation: statusSelfHitShake 0.58s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  }
+}
+
+.combat-reaction {
+  position: absolute;
+  inset: 0;
+  z-index: 24;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 0.75rem;
+}
+
+.reaction-ring,
+.reaction-burst {
+  position: absolute;
+  inset: 16%;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.reaction-burst {
+  inset: 0;
+  border-radius: 0.75rem;
+}
+
+.reaction-label {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  max-width: 88%;
+  padding: 0.24rem 0.45rem;
+  transform: translateX(-50%);
+  color: #fff;
+  background: rgba(2, 6, 23, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: reactionLabelIn 0.68s ease-out forwards;
+}
+
+.reaction-visual-item-use,
+.reaction-visual-item-hit {
+  background: radial-gradient(circle at center, rgba(74, 222, 128, 0.28), transparent 64%);
+
+  .reaction-ring {
+    border-color: rgba(134, 239, 172, 0.9);
+    animation: reactionRingExpand 0.65s ease-out forwards;
+  }
+
+  .reaction-burst {
+    box-shadow: inset 0 0 32px rgba(74, 222, 128, 0.52);
+    animation: reactionFlash 0.55s ease-out forwards;
+  }
+}
+
+.reaction-visual-status-block {
+  background: rgba(15, 23, 42, 0.34);
+
+  .reaction-burst {
+    border-color: rgba(148, 163, 184, 0.72);
+    box-shadow: inset 0 0 34px rgba(100, 116, 139, 0.68);
+    animation: reactionFlash 0.55s ease-out forwards;
+  }
+}
+
+.reaction-visual-status-self-hit {
+  background: radial-gradient(circle at center, rgba(244, 63, 94, 0.34), transparent 68%);
+
+  .reaction-ring {
+    border-color: rgba(251, 113, 133, 0.94);
+    animation: reactionRingContract 0.58s ease-in forwards;
+  }
+
+  .reaction-burst {
+    box-shadow: inset 0 0 42px rgba(225, 29, 72, 0.72);
+    animation: reactionFlash 0.58s ease-out forwards;
+  }
+}
+
+.avatar-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  filter: blur(30px);
+  opacity: 0.2;
+  transition: opacity 0.7s ease;
+
+  @media (min-width: 1024px) {
+    filter: blur(48px);
+  }
+}
+
+.glow-player {
+  background: #06b6d4;
+}
+
+.glow-enemy {
+  background: #f43f5e;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 2px solid;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  position: relative;
+  transition: all 0.3s ease;
+
+  @media (min-width: 1024px) {
+    border-radius: 1rem;
+  }
+}
+
+.avatar-player {
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.avatar-enemy {
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+.avatar-pulse {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.avatar-scale {
+  transform: scale(1.05);
+}
+
+.avatar-climax {
+  filter: brightness(1.25) saturate(2);
+  animation: pulse 0.5s ease-in-out infinite;
+}
+
+.mobile-warning {
+  display: block;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  z-index: 30;
+  background: #eab308;
+  color: black;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 1s ease-in-out infinite;
+  border: 2px solid #fef08a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  span {
+    font-size: 0.625rem;
+    font-weight: 700;
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.stats-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  padding: 5%;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  // 让内容随容器缩放
+  font-size: clamp(0.5rem, 2vw, 0.875rem);
+}
+
+.overlay-title {
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+}
+
+// ========== 状态条 ==========
+.bars-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0;
+
+  @media (min-width: 1024px) {
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+}
+
+.resource-bar-slot {
+  position: relative;
+  width: 100%;
+}
+
+.resource-popup {
+  position: absolute;
+  left: 50%;
+  bottom: 0.45rem;
+  z-index: 8;
+  pointer-events: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  opacity: 0;
+  transform: translate(calc(-50% + var(--popup-offset)), 8px) scale(0.72);
+  animation: resource-popup-bounce 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--popup-delay) forwards;
+  will-change: transform, opacity;
+
+  &.stamina {
+    color: #86efac;
+    text-shadow:
+      0 0 5px rgba(22, 163, 74, 0.95),
+      0 0 14px rgba(34, 197, 94, 0.75),
+      0 1px 2px rgba(0, 0, 0, 0.9);
+  }
+
+  &.pleasure {
+    color: #fb7185;
+    text-shadow:
+      0 0 5px rgba(225, 29, 72, 0.95),
+      0 0 14px rgba(244, 63, 94, 0.78),
+      0 1px 2px rgba(0, 0, 0, 0.9);
+  }
+}
+
+.climax-bar {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+@keyframes resource-popup-bounce {
+  0% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--popup-offset)), 8px) scale(0.72);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--popup-offset)), -9px) scale(1.18);
+  }
+  38% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--popup-offset)), -3px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--popup-offset)), -46px) scale(0.88);
+  }
+}
+
+@keyframes itemReactionPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes statusBlockedShake {
+  0%,
+  100% {
+    transform: translateX(0);
+    filter: saturate(1);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(4px);
+    filter: saturate(0.45);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes statusSelfHitShake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  18% {
+    transform: translate(-6px, 1px) rotate(-1deg);
+  }
+  36% {
+    transform: translate(6px, -1px) rotate(1deg);
+  }
+  54% {
+    transform: translate(-4px, 0) rotate(-0.6deg);
+  }
+  72% {
+    transform: translate(3px, 1px) rotate(0.4deg);
+  }
+}
+
+@keyframes reactionRingExpand {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.35);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.65);
+  }
+}
+
+@keyframes reactionRingContract {
+  0% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+  28% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+@keyframes reactionFlash {
+  0% {
+    opacity: 0;
+  }
+  22% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes reactionLabelIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(0.9);
+  }
+  24%,
+  72% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -5px) scale(0.96);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+</style>

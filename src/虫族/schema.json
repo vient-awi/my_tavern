@@ -1,0 +1,564 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "世界": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "当前时间": {
+          "default": "星历1207-03-01 08:00",
+          "type": "string"
+        },
+        "当前区域": {
+          "default": "首都星",
+          "type": "string"
+        },
+        "当前场景": {
+          "default": "前往星港的路上",
+          "type": "string"
+        },
+        "近期事务": {
+          "default": "前往星港，搭乘客船去洛希边境报到",
+          "type": "string"
+        }
+      }
+    },
+    "主角": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "姓名": {
+          "default": "待初始化",
+          "type": "string"
+        },
+        "精神力": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "数值": {
+              "default": 46,
+              "type": "number"
+            },
+            "等级": {
+              "default": "B",
+              "type": "string",
+              "enum": [
+                "C",
+                "B",
+                "A",
+                "S",
+                "SS",
+                "SSS"
+              ]
+            }
+          }
+        },
+        "饱食度": {
+          "default": 9,
+          "description": "食量刻度，12为满，0为濒临饿毙。9~12饱足状态最好；6~8正常无影响；3~5开始饿，判断力略受影响；1~2饿急了，体力与判断力明显下降，此时能吸空三个军雄；0濒危，营养不良无法作战",
+          "$ref": "#/$defs/__schema0"
+        },
+        "军衔": {
+          "default": "上尉",
+          "type": "string"
+        },
+        "军功": {
+          "default": 320,
+          "type": "number"
+        },
+        "所属": {
+          "default": "军校指挥官院",
+          "type": "string"
+        },
+        "声望": {
+          "default": 260,
+          "type": "number"
+        },
+        "尾勾": {
+          "default": "已生长",
+          "type": "string",
+          "enum": [
+            "未生长",
+            "已生长"
+          ]
+        }
+      }
+    },
+    "论坛": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "昵称": {
+          "default": "落雨天",
+          "type": "string"
+        },
+        "声望": {
+          "default": 41,
+          "type": "number"
+        },
+        "帖子": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "帖子ID，从1起递增"
+          },
+          "additionalProperties": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "标题": {
+                "default": "",
+                "type": "string"
+              },
+              "作者": {
+                "default": "落雨天",
+                "type": "string"
+              },
+              "板块": {
+                "default": "匿名树洞",
+                "type": "string",
+                "enum": [
+                  "热门",
+                  "求助专区",
+                  "蜜事交流",
+                  "匿名树洞"
+                ]
+              },
+              "正文": {
+                "default": "",
+                "type": "string"
+              },
+              "点赞": {
+                "default": 0,
+                "type": "number"
+              },
+              "我的点赞": {
+                "default": false,
+                "type": "boolean"
+              },
+              "标记": {
+                "description": "列表页的角标。爆=全站炸了，热=讨论多，新=刚发的，置顶=理事会挂的。不确定就留空",
+                "default": "",
+                "$ref": "#/$defs/__schema1"
+              },
+              "发布时间": {
+                "description": "直接写能读的相对说法，如「3小时前」「昨天」「前天」。这里是虚构星历，没有真实时间可换算，你怎么写前端就怎么显示",
+                "default": "",
+                "$ref": "#/$defs/__schema2"
+              },
+              "话题": {
+                "description": "帖子的分类标签，如 #洛希前线#。跟「热门话题」是两回事，那个是全站热议榜",
+                "default": [],
+                "$ref": "#/$defs/__schema3"
+              },
+              "评论": {
+                "default": [],
+                "type": "array",
+                "items": {
+                  "default": {},
+                  "type": "object",
+                  "properties": {
+                    "昵称": {
+                      "default": "",
+                      "type": "string"
+                    },
+                    "内容": {
+                      "default": "",
+                      "type": "string"
+                    },
+                    "点赞": {
+                      "default": 0,
+                      "type": "number"
+                    },
+                    "我的点赞": {
+                      "default": false,
+                      "type": "boolean"
+                    },
+                    "时间": {
+                      "description": "相对说法，如「1小时前」",
+                      "default": "",
+                      "$ref": "#/$defs/__schema4"
+                    },
+                    "回复": {
+                      "default": [],
+                      "type": "array",
+                      "items": {
+                        "default": {},
+                        "type": "object",
+                        "properties": {
+                          "昵称": {
+                            "default": "",
+                            "type": "string"
+                          },
+                          "内容": {
+                            "default": "",
+                            "type": "string"
+                          },
+                          "点赞": {
+                            "default": 0,
+                            "type": "number"
+                          },
+                          "我的点赞": {
+                            "default": false,
+                            "type": "boolean"
+                          },
+                          "时间": {
+                            "description": "相对说法，如「20分钟前」",
+                            "default": "",
+                            "$ref": "#/$defs/__schema5"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "热门话题": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "话题ID，从1起递增"
+          },
+          "additionalProperties": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "标题": {
+                "description": "一句有情绪的话，不带 # 号。如「军雄临产期实战是否违规」",
+                "default": "",
+                "$ref": "#/$defs/__schema6"
+              },
+              "热度": {
+                "description": "讨论量。显示时前端会缩写成 1.2k 这样",
+                "default": 0,
+                "$ref": "#/$defs/__schema7"
+              },
+              "相关帖子": {
+                "description": "正在聊这个话题的帖子ID",
+                "default": [],
+                "$ref": "#/$defs/__schema8"
+              }
+            }
+          }
+        },
+        "公告": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "公告ID，从1起递增"
+          },
+          "additionalProperties": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "标题": {
+                "default": "",
+                "type": "string"
+              },
+              "正文": {
+                "default": "",
+                "type": "string"
+              },
+              "发布者": {
+                "default": "《触角》理事会",
+                "type": "string"
+              },
+              "置顶": {
+                "default": true,
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "通知": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "点赞": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "default": {},
+                "type": "object",
+                "properties": {
+                  "来源": {
+                    "default": "",
+                    "type": "string"
+                  },
+                  "摘要": {
+                    "default": "",
+                    "type": "string"
+                  },
+                  "已读": {
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "回复": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "default": {},
+                "type": "object",
+                "properties": {
+                  "来源": {
+                    "default": "",
+                    "type": "string"
+                  },
+                  "摘要": {
+                    "default": "",
+                    "type": "string"
+                  },
+                  "已读": {
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "系统": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "default": {},
+                "type": "object",
+                "properties": {
+                  "标题": {
+                    "default": "",
+                    "type": "string"
+                  },
+                  "内容": {
+                    "default": "",
+                    "type": "string"
+                  },
+                  "已读": {
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "私信": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "发信人昵称"
+          },
+          "additionalProperties": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "$界面状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "视图": {
+              "default": "list",
+              "type": "string",
+              "enum": [
+                "list",
+                "detail",
+                "compose",
+                "mail",
+                "notice",
+                "topic",
+                "search",
+                "settings",
+                "home"
+              ]
+            },
+            "板块": {
+              "default": "热门",
+              "type": "string"
+            },
+            "帖子ID": {
+              "default": "",
+              "type": "string"
+            },
+            "公告ID": {
+              "default": "",
+              "type": "string"
+            },
+            "话题": {
+              "default": "",
+              "type": "string"
+            },
+            "搜索词": {
+              "default": "",
+              "type": "string"
+            },
+            "私信对象": {
+              "default": "",
+              "type": "string"
+            },
+            "草稿标题": {
+              "default": "",
+              "type": "string"
+            },
+            "草稿正文": {
+              "default": "",
+              "type": "string"
+            },
+            "草稿板块": {
+              "default": "匿名树洞",
+              "type": "string",
+              "enum": [
+                "热门",
+                "求助专区",
+                "蜜事交流",
+                "匿名树洞"
+              ]
+            },
+            "每页条数": {
+              "default": 12,
+              "type": "number"
+            }
+          }
+        },
+        "$帖子计数": {
+          "default": 0,
+          "type": "number"
+        },
+        "$公告计数": {
+          "default": 0,
+          "type": "number"
+        },
+        "$话题计数": {
+          "default": 0,
+          "type": "number"
+        }
+      }
+    },
+    "关系": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "蜜源名册": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "雄虫姓名"
+          },
+          "additionalProperties": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "身份": {
+                "default": "待确认",
+                "type": "string"
+              },
+              "关系": {
+                "default": "陌路",
+                "type": "string",
+                "enum": [
+                  "陌路",
+                  "萍水相逢",
+                  "固定蜜源",
+                  "雄侍"
+                ]
+              },
+              "蜜质": {
+                "default": "待确认",
+                "type": "string"
+              },
+              "亲密度": {
+                "default": 0,
+                "type": "number"
+              },
+              "供给能力": {
+                "default": 0,
+                "type": "number"
+              },
+              "身体状态": {
+                "default": "健康",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "雄虫关系": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "雄虫姓名"
+          },
+          "additionalProperties": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "好感度": {
+                "default": 0,
+                "type": "number"
+              },
+              "信任度": {
+                "default": 0,
+                "type": "number"
+              },
+              "备注": {
+                "default": "",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "__schema0": {
+      "type": "number"
+    },
+    "__schema1": {
+      "type": "string",
+      "enum": [
+        "",
+        "置顶",
+        "爆",
+        "热",
+        "新"
+      ]
+    },
+    "__schema2": {
+      "type": "string"
+    },
+    "__schema3": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "__schema4": {
+      "type": "string"
+    },
+    "__schema5": {
+      "type": "string"
+    },
+    "__schema6": {
+      "type": "string"
+    },
+    "__schema7": {
+      "type": "number"
+    },
+    "__schema8": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

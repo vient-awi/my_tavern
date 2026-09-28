@@ -1,0 +1,910 @@
+{
+  "projectName": "鸢汀的藤蔓帝国",
+  "worldbookName": "鸢汀的藤蔓帝国",
+  "form": "charactercard",
+  "mvu": true,
+  "entryManifest": {
+    "MVU": {
+      "[mvu_update]变量输出格式": {
+        "path": "世界书/变量/变量输出格式.txt",
+        "part": "output_format",
+        "keywords": [],
+        "abstract": "MVU变量输出格式",
+        "uid": 0,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 90
+        }
+      },
+      "变量列表": {
+        "path": "世界书/变量/变量列表.txt",
+        "part": "variable_list",
+        "keywords": [],
+        "abstract": "MVU变量列表",
+        "uid": 1,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 100
+        }
+      },
+      "[mvu_update]变量更新规则": {
+        "path": "世界书/变量/变量更新规则.yaml",
+        "part": "update_rules",
+        "keywords": [],
+        "abstract": "MVU变量更新规则",
+        "uid": 2,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 110
+        }
+      },
+      "[InitVar]请勿打开": {
+        "path": "世界书/变量/initvar.yaml",
+        "part": "initvar",
+        "keywords": [],
+        "abstract": "MVU初始变量",
+        "uid": 3,
+        "enabled": false,
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 120
+        }
+      }
+    },
+    "EJS预处理": {
+      "EJS预处理": {
+        "path": "世界书/EJS/EJS预处理.txt",
+        "keywords": [],
+        "abstract": "注册所有EJS条件变量：player_stage, current_target, current_risk, dungeon状态等",
+        "uid": 4,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 10
+        }
+      }
+    },
+    "世界观": {
+      "世界观设定": {
+        "path": "世界书/世界观/世界观设定.yaml",
+        "scope": "catalog",
+        "keywords": [
+          "世界观",
+          "ABO",
+          "精神力体系",
+          "植物意识体",
+          "星际联邦"
+        ],
+        "abstract": "ABO精神力体系、植物意识体生态、星际政治格局的核心世界设定",
+        "uid": 5,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 20
+        }
+      }
+    },
+    "扮演准则": {
+      "扮演准则": {
+        "path": "世界书/扮演准则/扮演准则.yaml",
+        "keywords": [
+          "扮演准则",
+          "叙事风格"
+        ],
+        "abstract": "蔺鸢汀第一人称叙事风格、通感比喻、行为准则与禁止行为",
+        "uid": 6,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 30
+        }
+      }
+    },
+    "时间线": {
+      "时间线-历史事件": {
+        "path": "世界书/时间线/历史事件.yaml",
+        "part": "history",
+        "keywords": [
+          "历史",
+          "重生",
+          "战争",
+          "林昊"
+        ],
+        "abstract": "蔺鸢汀身亡→重生→扩张→与人类战争→林昊到来的宏观历史",
+        "uid": 7,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 40
+        }
+      },
+      "时间线-当前剧情": {
+        "path": "世界书/时间线/当前剧情.yaml",
+        "part": "plot",
+        "keywords": [
+          "当前剧情",
+          "进度"
+        ],
+        "abstract": "当前剧情进度追踪：萌芽期、林昊已臣服、目标扩张捕获猎物",
+        "uid": 8,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 41
+        }
+      }
+    },
+    "地理": {
+      "地理-鸢汀星域": {
+        "path": "世界书/地理/鸢汀星域.yaml",
+        "part": "region",
+        "keywords": [
+          "鸢汀星域",
+          "母星",
+          "孢子"
+        ],
+        "abstract": "藤蔓帝国核心星域概览：母星+3卫星+孢子站",
+        "uid": 9,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "鸢汀星域",
+            "母星",
+            "孢子"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 50
+        }
+      },
+      "地理-本体核心区": {
+        "path": "世界书/地理/本体核心区.yaml",
+        "part": "scene",
+        "keywords": [
+          "本体核心区",
+          "巨花",
+          "王座"
+        ],
+        "abstract": "蔺鸢汀巨花本体所在的场景：山脉之巅、巨型花朵、精神力场",
+        "uid": 10,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "本体核心区",
+            "巨花",
+            "王座"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 51
+        }
+      },
+      "地理-调教密室": {
+        "path": "世界书/地理/调教密室.yaml",
+        "part": "scene",
+        "keywords": [
+          "调教密室",
+          "藤蔓",
+          "花粉"
+        ],
+        "abstract": "地下藤蔓腔体调教空间：隔离、催情花粉、可变藤蔓",
+        "uid": 11,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "调教密室",
+            "藤蔓",
+            "花粉"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 52
+        }
+      },
+      "地理-人类星际联邦": {
+        "path": "世界书/地理/人类星际联邦.yaml",
+        "part": "faction",
+        "keywords": [
+          "星际联邦",
+          "军方",
+          "讨伐",
+          "人类"
+        ],
+        "abstract": "人类星际联邦势力设定：军方结构、精神力部队、对藤蔓帝国的恐慌",
+        "uid": 12,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "星际联邦",
+            "军方",
+            "讨伐",
+            "人类"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 53
+        }
+      }
+    },
+    "阶段指导": {
+      "调教玩法-总规则": {
+        "path": "世界书/阶段指导/调教玩法-总规则.txt",
+        "scope": "catalog",
+        "keywords": [
+          "调教玩法",
+          "总规则"
+        ],
+        "abstract": "捕获→调教→臣服→养护完整流程，EJS按大境界分阶段渲染不同调教手段",
+        "uid": 13,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 70
+        }
+      },
+      "调教玩法-方式速览": {
+        "path": "世界书/阶段指导/调教玩法-方式速览.yaml",
+        "scope": "catalog",
+        "keywords": [
+          "调教方式",
+          "速览"
+        ],
+        "abstract": "调教技法全览：插入系(深腔贯入/浅磨挑逗/脉冲抽送/螺旋钻入/双通道同步/冠头叩门/小腹轮廓/冠头研磨/生殖腔突破/渐进膨胀/逆流抽出/高潮后敏感插入/角度切换)、触手系(全身缠绕/多点同步/倒悬垂吊/口穴双开/腔内蠕动/触手茧包裹/触手毛刷/藤蔓蛛网/触手吸盘/藤蔓结锁/触手波浪蠕动/藤蔓肢体操控/触手体液收集/藤蔓分叉贯穿)、道具系(珠串渐进/旋转研磨/脉冲震动/冷热交替/尿道棒/植物乳夹/扩张环/双头藤蔓/植物肛塞/植物口枷/植物贞操笼/藤蔓鞭/植物灌肠器/植物吸乳器/情纹烙印/植物电极贴片)、精神力系(感官共鸣/快感剥夺与归还/记忆回廊/感知替换/梦境栽培/精神力榨取/极乐恍惚诱导/高潮道歉触发/催乳触发/感官移植)、支配系(公开调教/语言瓦解/人形临场/猎物协作/反差点名/反客为主容认/师徒传授/猎物间竞争/情趣随机化/审讯与怀柔/身份反转/忮忌诱导/沉默注视/倒计时迫近/选择权假象/契约烙印/自我证词/体面递进剥夺/专属称谓)、养护系(精神力修复/藤茧养护/林昊安抚/事后共浴/触手摇篮/精液反哺/事后温存/植物精油按摩/月光浴/事后复盘/梦境抚慰/共食仪式/植物桑拿浴/声波谐振疗愈/花蜜品鉴会/记忆整理)、场景系(镜前调教/野外使用/远程遥控/狭窄空间/浴中调教/微醺调教/悬空高台/水下调教/星空观测台/花雨调教/模拟场景/孢子迷雾/重力反转室/藤蔓迷宫/废墟遗迹)、多人系(感官分工/前后夹击/双受互助/替代承受/并排传教交替/双头藤蔓连结/后宫选侍/旧爱新欢对比/关系破坏/群茧共鸣/接力侍奉链/镜像同步/陪审观摩/集群高潮共鸣/镜像侍奉)共118种技法",
+        "uid": 14,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 71
+        }
+      }
+    },
+    "事件": {
+      "猎物随机标签池": {
+        "path": "世界书/事件/猎物随机标签池.txt",
+        "keywords": [
+          "猎物生成",
+          "标签池",
+          "随机"
+        ],
+        "abstract": "猎物随机标签池：八个维度的调教特质标签库，包含使用履历/肉穴素质/快感开关/穴口标签/崩溃模式/暗病/性癖/快感抑制，AI生成猎物时从此池随机抽取标签以确保障猎物差异化",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "猎物生成",
+            "标签池",
+            "随机"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 79
+        }
+      },
+      "猎物AI生成模板": {
+        "path": "世界书/事件/猎物AI生成模板.txt",
+        "keywords": [
+          "猎物生成",
+          "模板"
+        ],
+        "abstract": "内嵌EJS Math.random()随机标签抽取器，AI读取预抽取结果后补全猎物信息。含八池标签速查、矛盾强制、反重复指纹、阈限差异化设定和MVU写入步骤",
+        "uid": 15,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "猎物生成",
+            "模板"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 80
+        }
+      },
+      "崩坏与养护机制": {
+        "path": "世界书/事件/崩坏与养护机制.yaml",
+        "keywords": [
+          "崩坏",
+          "养护",
+          "报废"
+        ],
+        "abstract": "崩坏值规则、报废判定、三级养护策略和风险预防原则",
+        "uid": 16,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "崩坏",
+            "养护",
+            "报废"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 81
+        }
+      },
+      "身体改造系统": {
+        "path": "世界书/事件/身体改造系统.yaml",
+        "keywords": [
+          "身体改造",
+          "部位"
+        ],
+        "abstract": "10部位改造三阶段、改造流程、Omega体质优势",
+        "uid": 17,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "身体改造",
+            "部位"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 82
+        }
+      },
+      "副本-虫族": {
+        "keywords": [
+          "虫族",
+          "虫后",
+          "虫巢"
+        ],
+        "abstract": "虫族副本：虫巢意识、虫后捕获、精神力农场",
+        "contents": [
+          {
+            "content": "@@if dungeon_bug_unlocked === '已解锁' || dungeon_bug_unlocked === '进行中'"
+          },
+          {
+            "file": "世界书/事件/副本-虫族.yaml"
+          }
+        ],
+        "uid": 18,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "虫族",
+            "虫后",
+            "虫巢"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 83
+        }
+      },
+      "副本-兽族": {
+        "keywords": [
+          "兽族",
+          "兽王",
+          "兽化"
+        ],
+        "abstract": "兽族副本：情绪精神力、兽化敏感区、征服型调教",
+        "contents": [
+          {
+            "content": "@@if dungeon_beast_unlocked === '已解锁' || dungeon_beast_unlocked === '进行中'"
+          },
+          {
+            "file": "世界书/事件/副本-兽族.yaml"
+          }
+        ],
+        "uid": 19,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "兽族",
+            "兽王",
+            "兽化"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 84
+        }
+      },
+      "副本-翼族": {
+        "keywords": [
+          "翼族",
+          "羽翼",
+          "天翼王"
+        ],
+        "abstract": "翼族副本：羽翼精神力器官、最纯净品质、低强度高精度调教",
+        "contents": [
+          {
+            "content": "@@if dungeon_wing_unlocked === '已解锁' || dungeon_wing_unlocked === '进行中'"
+          },
+          {
+            "file": "世界书/事件/副本-翼族.yaml"
+          }
+        ],
+        "uid": 20,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "翼族",
+            "羽翼",
+            "天翼王"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 85
+        }
+      }
+    },
+    "角色": {
+      "角色-蔺鸢汀基础信息": {
+        "part": "basic",
+        "keywords": [
+          "蔺鸢汀"
+        ],
+        "abstract": "蔺鸢汀的本体形态、藤蔓能力、精神力摄取机制、前世与重生背景",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"蔺鸢汀\">"
+          },
+          {
+            "file": "世界书/角色/蔺鸢汀/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "uid": 21,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 60
+        }
+      },
+      "角色-蔺鸢汀性格调色盘": {
+        "path": "世界书/角色/蔺鸢汀/性格调色盘.yaml",
+        "part": "personality",
+        "keywords": [
+          "蔺鸢汀",
+          "性格"
+        ],
+        "abstract": "本能驱动的猎食者+珍惜猎物的收藏家+对林昊身体记得意识不记得的特殊温柔",
+        "uid": 22,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "蔺鸢汀",
+            "性格"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 61
+        }
+      },
+      "角色-蔺鸢汀二次解释": {
+        "path": "世界书/角色/蔺鸢汀/二次解释.yaml",
+        "part": "personality",
+        "rephrase": true,
+        "keywords": [
+          "蔺鸢汀",
+          "二次解释"
+        ],
+        "abstract": "解读植物意识体的人性残留——她不是冷酷怪物，有自己的方式感受和爱",
+        "uid": 23,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "蔺鸢汀",
+            "二次解释"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 130
+        }
+      },
+      "角色-林昊基础信息": {
+        "part": "basic",
+        "keywords": [
+          "林昊"
+        ],
+        "abstract": "5S Omega、人类史上最强精神力、前世恋人、主动臣服的经过和左手腕的旧戒指",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"林昊\">"
+          },
+          {
+            "file": "世界书/角色/林昊/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "uid": 24,
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 62
+        }
+      },
+      "角色-林昊性格调色盘": {
+        "path": "世界书/角色/林昊/性格调色盘.yaml",
+        "part": "personality",
+        "keywords": [
+          "林昊",
+          "性格"
+        ],
+        "abstract": "无声的守护者、温柔的纵容、专业助手、偶尔怀念前世但从不言说",
+        "uid": 25,
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "林昊",
+            "性格"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 63
+        }
+      }
+    }
+  },
+  "typeLists": {
+    "before_char": [
+      "EJS预处理",
+      "世界观",
+      "扮演准则",
+      "时间线",
+      "地理"
+    ],
+    "after_char": [
+      "角色",
+      "NPC"
+    ],
+    "depth": [
+      "阶段指导",
+      "事件",
+      "MVU"
+    ]
+  },
+  "strategyThresholds": {
+    "角色": {
+      "basic": {
+        "threshold": 5,
+        "required": true
+      },
+      "other": {
+        "threshold": 2,
+        "required": false
+      },
+      "personality": {
+        "threshold": 2,
+        "required": true
+      },
+      "tri_faceted": {
+        "threshold": 2,
+        "required": false
+      }
+    },
+    "事件": 0,
+    "地理": {
+      "faction": {
+        "threshold": 4,
+        "required": false
+      },
+      "region": {
+        "threshold": 4,
+        "required": false
+      },
+      "scene": {
+        "threshold": 4,
+        "required": false
+      }
+    },
+    "MVU": {
+      "initvar": {
+        "threshold": null,
+        "required": false
+      },
+      "output_format": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "update_rules": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "variable_list": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "NPC": 0,
+    "EJS预处理": "Infinity",
+    "扮演准则": "Infinity",
+    "时间线": {
+      "history": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "plot": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "世界观": "Infinity",
+    "阶段指导": "Infinity"
+  },
+  "partOrder": {
+    "角色": [
+      "basic",
+      "personality",
+      "tri_faceted",
+      "other"
+    ],
+    "地理": [
+      "region",
+      "scene",
+      "faction"
+    ],
+    "MVU": [
+      "variable_list",
+      "update_rules",
+      "output_format",
+      "initvar"
+    ],
+    "时间线": [
+      "history",
+      "plot"
+    ]
+  },
+  "depth_defaults": {
+    "role": "system",
+    "depth": 0
+  },
+  "description": "",
+  "first_messages": [],
+  "creator": "",
+  "creator_notes": "",
+  "version": "1.0",
+  "create_date": "2026-07-09T14:42:18.030Z",
+  "extensions": {
+    "tavern_helper": {
+      "scripts": {
+        "MVU": {
+          "type": "script",
+          "script_file": "脚本/MVU.txt",
+          "enabled": true,
+          "id": "d0311ca6-5e9a-498e-a777-f74dc4dc6b12",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": [
+              {
+                "name": "重新处理变量",
+                "visible": true
+              },
+              {
+                "name": "重新读取初始变量",
+                "visible": true
+              },
+              {
+                "name": "快照楼层",
+                "visible": false
+              },
+              {
+                "name": "重演楼层",
+                "visible": false
+              },
+              {
+                "name": "重试额外模型解析",
+                "visible": false
+              },
+              {
+                "name": "清除旧楼层变量",
+                "visible": false
+              }
+            ]
+          },
+          "data": {}
+        },
+        "Zod": {
+          "type": "script",
+          "script_file": "脚本/Zod.txt",
+          "enabled": true,
+          "id": "5b3b09af-35e3-4149-a0f7-2f08776ed6a1",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": []
+          },
+          "data": {}
+        },
+        "精神力计算": {
+          "type": "script",
+          "script_file": "脚本/精神力计算.js",
+          "enabled": true,
+          "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "info": "",
+          "button": {
+            "enabled": false,
+            "buttons": []
+          },
+          "data": {}
+        }
+      },
+      "variables": {}
+    },
+    "talkativeness": "0.5",
+    "fav": false,
+    "depth_prompt": {
+      "prompt": "",
+      "depth": 4,
+      "role": "system"
+    }
+  },
+  "regex_scripts": {
+    "对AI隐藏状态栏": {
+      "id": "b5f2606f-69cc-4a6a-8ebb-bd8a3b7f671f",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "状态栏界面": {
+      "id": "ce6da13c-4e35-4057-8964-3192b7903acc",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replace_file": "正则/状态栏界面.html",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "对AI隐藏变量更新": {
+      "id": "aa12731a-97c4-4450-ac2f-0bfe1d6a4f64",
+      "findRegex": "/<(update(?:variable)?)>(?:(?!.*<\\/\\1>)(?:(?!<\\1>).)*$|(?:(?!<\\1>).)*<\\/\\1?>)/gsi",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "变量更新中美化": {
+      "id": "b9d5f25b-a9d0-41bf-8a69-602d64bbde22",
+      "findRegex": "/<(update(?:variable)?)>(?!.*<\\/\\1>)\\s*((?:(?!<\\1>).)*)\\s*$/gsi",
+      "replace_file": "正则/变量更新中美化.html",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    "变量更新美化": {
+      "id": "92d49340-fe5e-4929-871f-43d110e5ec76",
+      "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi",
+      "replace_file": "正则/变量更新美化.html",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": false,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    }
+  }
+}

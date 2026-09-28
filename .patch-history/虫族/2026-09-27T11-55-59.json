@@ -1,0 +1,898 @@
+{
+  "projectName": "虫族",
+  "worldbookName": "虫族",
+  "form": "charactercard",
+  "mvu": true,
+  "entryManifest": {
+    "世界观": {
+      "种族与社会": {
+        "path": "世界书/世界观/种族与社会.yaml",
+        "keywords": [
+          "雌虫",
+          "雄虫",
+          "亚雄",
+          "军雄",
+          "翼族"
+        ],
+        "abstract": "虫族三种性别的比例、地位、寿命、外形与各自的职能分工，以及外敌翼族",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 10
+        }
+      },
+      "身体构造": {
+        "path": "世界书/世界观/身体构造.yaml",
+        "keywords": [
+          "雌茎",
+          "尾勾",
+          "生殖道",
+          "生殖腔",
+          "肉唇",
+          "肉茎",
+          "蜜穴"
+        ],
+        "abstract": "雌虫、雄虫、亚雄三者的下体构造、生殖腔、肉唇、肉茎与尾勾的有无",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 11
+        }
+      },
+      "生育": {
+        "path": "世界书/世界观/生育.yaml",
+        "keywords": [
+          "临产",
+          "虫蛋",
+          "虫奶",
+          "模拟交合器",
+          "怀孕",
+          "产卵"
+        ],
+        "abstract": "雄虫的成熟年龄、自然怀孕与生产周期、模拟交合器的作用、虫蛋与临产状态、产后涨乳",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 12
+        }
+      },
+      "雌精": {
+        "path": "世界书/世界观/雌精.yaml",
+        "keywords": [
+          "雌精",
+          "雌茎",
+          "尾勾"
+        ],
+        "abstract": "雌精的来源与五项作用：受精、催产、提质、发情信息素、促使雄虫分泌虫蜜",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 13
+        }
+      },
+      "虫蜜": {
+        "path": "世界书/世界观/虫蜜.yaml",
+        "keywords": [
+          "虫蜜",
+          "蜜穴",
+          "取蜜",
+          "吸蜜",
+          "营养膏"
+        ],
+        "abstract": "虫蜜的分泌、储存与浓稠化机制，作为雌虫唯一食物的地位，以及供养职责",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 14
+        }
+      },
+      "王虫": {
+        "path": "世界书/世界观/王虫.yaml",
+        "keywords": [
+          "王虫",
+          "雄王",
+          "雌王",
+          "王巢",
+          "王蜜"
+        ],
+        "abstract": "王虫的选拔、雄王与雌王的能力强化、王巢与王蜜，以及王虫的吞噬能力",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 15
+        }
+      }
+    },
+    "扮演准则": {
+      "扮演准则": {
+        "path": "世界书/扮演准则/扮演准则.yaml",
+        "keywords": [],
+        "abstract": "全局扮演约束：第二人称视角、解剖式生理描写、禁止血腥猎奇、角色独立逻辑与论坛发言规则",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 20
+        }
+      }
+    },
+    "时间线": {},
+    "地理": {
+      "洛希边境": {
+        "path": "世界书/地理/洛希边境.yaml",
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "洛希边境",
+          "洛希防线",
+          "洛希"
+        ],
+        "abstract": "洛希边境：最危险的战场，翼族免疫精神攻击导致雌虫绝迹，防线编制与战场环境",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "洛希边境",
+            "洛希防线",
+            "洛希"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 30
+        }
+      },
+      "星港": {
+        "path": "世界书/地理/星港.yaml",
+        "scope": "specific",
+        "part": "scene",
+        "keywords": [
+          "星港",
+          "候船厅",
+          "车站"
+        ],
+        "abstract": "星港：防线后方的补给枢纽与人员进出通道，主角与林昊相遇的地点",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "星港",
+            "候船厅",
+            "车站"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 40
+        }
+      },
+      "防线驻地": {
+        "path": "世界书/地理/防线驻地.yaml",
+        "scope": "specific",
+        "part": "scene",
+        "keywords": [
+          "防线驻地",
+          "指挥室",
+          "军需处",
+          "军官营房",
+          "哨塔"
+        ],
+        "abstract": "防线驻地：驻军营地的主要地点与氛围，含指挥室、医疗组、军需处、营房、食堂、哨塔",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "防线驻地",
+            "指挥室",
+            "军需处",
+            "军官营房",
+            "哨塔"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 50
+        }
+      },
+      "裂隙": {
+        "path": "世界书/地理/裂隙.yaml",
+        "scope": "specific",
+        "part": "scene",
+        "keywords": [
+          "裂隙",
+          "裂缝",
+          "翼族巢域"
+        ],
+        "abstract": "裂隙：防线战场本体，翼族涌出的裂口，作战特征与两段防线记录",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "裂隙",
+            "裂缝",
+            "翼族巢域"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 60
+        }
+      },
+      "沙利文大将": {
+        "path": "世界书/地理/沙利文大将.yaml",
+        "scope": "specific",
+        "part": "faction",
+        "keywords": [
+          "沙利文",
+          "塞缪尔·沙利文",
+          "沙利文大将"
+        ],
+        "abstract": "沙利文大将：元帅麾下四将之一，在洛希靠产蜜守防线的军雄偶像，身边常伴五六只雌虫",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "沙利文",
+            "塞缪尔·沙利文",
+            "沙利文大将"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 70
+        }
+      }
+    },
+    "阶段指导": {
+      "阶段指导": {
+        "path": "世界书/阶段指导/阶段指导.txt",
+        "keywords": [],
+        "abstract": "按<user>当前人生阶段裁切的主持策略：初入社会、军雌生涯、王巢与权力三个阶段各自的目标、叙事重点、互动方式与推进边界，外加跨阶段的通用主持规则",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 110
+        }
+      }
+    },
+    "事件": {
+      "触角论坛": {
+        "path": "世界书/事件/触角论坛.yaml",
+        "scope": "catalog",
+        "keywords": [
+          "触角",
+          "论坛",
+          "落雨天",
+          "发帖",
+          "帖子"
+        ],
+        "abstract": "《触角》论坛系统：雌虫匿名论坛的板块、页面构成、用户操作与帖子评论的生成要求",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 120
+        }
+      },
+      "论坛网友标签池": {
+        "path": "世界书/事件/论坛网友标签池.yaml",
+        "scope": "specific",
+        "keywords": [
+          "标签池",
+          "网友",
+          "昵称"
+        ],
+        "abstract": "论坛网友的四类标签池：身份、性格、处境、说话风格，用于随机组合生成不同的雌虫网友",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "标签池",
+            "网友",
+            "昵称"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 121
+        }
+      },
+      "论坛网友生成": {
+        "path": "世界书/事件/论坛网友生成.yaml",
+        "scope": "specific",
+        "keywords": [
+          "生成",
+          "网友",
+          "评论"
+        ],
+        "abstract": "论坛网友的生成步骤与示例：四池各抽一项组合成具体的人，并按其处境与风格生成评论",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "生成",
+            "网友",
+            "评论"
+          ]
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 122
+        }
+      }
+    },
+    "角色": {
+      "林昊_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "林昊"
+        ],
+        "abstract": "林昊的基础信息：洛希防线副官，上尉，在洛希坚守多年的雄虫，主角前往边境途中偶遇的军雄",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"林昊\">"
+          },
+          {
+            "file": "世界书/角色/林昊/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 80
+        }
+      },
+      "林昊_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "林昊"
+        ],
+        "abstract": "林昊的性格调色盘：沉默隐忍为底色，忠诚专一与细心体贴为主色调，点缀占有欲与细腻",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"林昊\">"
+          },
+          {
+            "file": "世界书/角色/林昊/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "林昊"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 81
+        }
+      },
+      "凯恩斯顿_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "凯恩·斯顿",
+          "凯恩",
+          "斯顿少将"
+        ],
+        "abstract": "凯恩·斯顿的基础信息：洛希防线少将、实际指挥官，雄兄死于护送雌虫的任务，对雌虫有偏见",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"凯恩·斯顿\">"
+          },
+          {
+            "file": "世界书/角色/凯恩·斯顿/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 82
+        }
+      },
+      "凯恩斯顿_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "凯恩·斯顿",
+          "凯恩",
+          "斯顿少将"
+        ],
+        "abstract": "凯恩·斯顿的性格调色盘：暴躁粗鲁为底色，重情重义与责任感为主色调，点缀对雌虫的偏见、战斗狂热、嘴硬心软",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"凯恩·斯顿\">"
+          },
+          {
+            "file": "世界书/角色/凯恩·斯顿/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "凯恩·斯顿",
+            "凯恩",
+            "斯顿少将"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 83
+        }
+      },
+      "戴蒙暗影_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "戴蒙·暗影",
+          "戴蒙",
+          "暗影中校"
+        ],
+        "abstract": "戴蒙·暗影的基础信息：洛希防线情报部中校、暗影小队负责人，满身疤痕、生殖腔旧伤、擅吹骨笛",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"戴蒙·暗影\">"
+          },
+          {
+            "file": "世界书/角色/戴蒙·暗影/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 84
+        }
+      },
+      "戴蒙暗影_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "戴蒙·暗影",
+          "戴蒙",
+          "暗影中校"
+        ],
+        "abstract": "戴蒙·暗影的性格调色盘：沉默寡言为底色，专业冷静与深沉内敛为主色调，点缀艺术气质与冷峻",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"戴蒙·暗影\">"
+          },
+          {
+            "file": "世界书/角色/戴蒙·暗影/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "戴蒙·暗影",
+            "戴蒙",
+            "暗影中校"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 85
+        }
+      },
+      "角色速览": {
+        "path": "世界书/角色/角色速览.yaml",
+        "scope": "catalog",
+        "keywords": [],
+        "abstract": "角色速览：本卡全部具名角色的性别、年龄、职务索引，含洛希防线编制与沙利文大将",
+        "position": {
+          "type": "after_character_definition",
+          "order": 90
+        }
+      }
+    },
+    "NPC": {
+      "洛希防线角色速览": {
+        "path": "世界书/NPC/洛希防线角色速览.yaml",
+        "scope": "catalog",
+        "keywords": [
+          "罗兰",
+          "威尔斯",
+          "乔纳森",
+          "莫里斯",
+          "安德烈",
+          "艾伦"
+        ],
+        "abstract": "洛希防线六名军官速览：罗兰、威尔斯、乔纳森、莫里斯、安德烈（雄虫）与艾伦（亚雄），含莫里斯与安德烈的生理同步机制",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 100
+        }
+      }
+    },
+    "MVU": {
+      "[mvu_update]变量输出格式": {
+        "path": "世界书/变量/变量输出格式.txt",
+        "part": "output_format",
+        "keywords": [],
+        "abstract": "MVU变量输出格式",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 130
+        }
+      },
+      "变量列表": {
+        "path": "世界书/变量/变量列表.txt",
+        "part": "variable_list",
+        "keywords": [],
+        "abstract": "MVU变量列表",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 140
+        }
+      },
+      "[mvu_update]变量更新规则": {
+        "path": "世界书/变量/变量更新规则.yaml",
+        "part": "update_rules",
+        "keywords": [],
+        "abstract": "MVU变量更新规则",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 150
+        }
+      },
+      "[InitVar]请勿打开": {
+        "path": "世界书/变量/initvar.yaml",
+        "part": "initvar",
+        "keywords": [],
+        "abstract": "MVU初始变量",
+        "enabled": false,
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 160
+        }
+      }
+    }
+  },
+  "typeLists": {
+    "before_char": [
+      "世界观",
+      "扮演准则",
+      "时间线",
+      "地理"
+    ],
+    "after_char": [
+      "角色",
+      "NPC"
+    ],
+    "depth": [
+      "阶段指导",
+      "事件",
+      "MVU"
+    ]
+  },
+  "strategyThresholds": {
+    "角色": {
+      "basic": {
+        "threshold": 5,
+        "required": true
+      },
+      "other": {
+        "threshold": 2,
+        "required": false
+      },
+      "personality": {
+        "threshold": 2,
+        "required": true
+      },
+      "tri_faceted": {
+        "threshold": 2,
+        "required": false
+      }
+    },
+    "事件": 0,
+    "地理": {
+      "faction": {
+        "threshold": 4,
+        "required": false
+      },
+      "region": {
+        "threshold": 4,
+        "required": false
+      },
+      "scene": {
+        "threshold": 4,
+        "required": false
+      }
+    },
+    "MVU": {
+      "initvar": {
+        "threshold": null,
+        "required": false
+      },
+      "output_format": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "update_rules": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "variable_list": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "NPC": 0,
+    "扮演准则": "Infinity",
+    "时间线": {
+      "history": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "plot": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "世界观": "Infinity",
+    "阶段指导": "Infinity"
+  },
+  "partOrder": {
+    "角色": [
+      "basic",
+      "personality",
+      "tri_faceted",
+      "other"
+    ],
+    "地理": [
+      "region",
+      "scene",
+      "faction"
+    ],
+    "MVU": [
+      "variable_list",
+      "update_rules",
+      "output_format",
+      "initvar"
+    ],
+    "时间线": [
+      "history",
+      "plot"
+    ]
+  },
+  "depth_defaults": {
+    "role": "system",
+    "depth": 0
+  },
+  "description": "虫族：雌虫、雄虫、亚雄三种性别，比例一比十九比七十，寿命约七百年。雌虫掌精神力与军权，以虫蜜为唯一食物；雄虫是唯一能生育的性别，参军是义务；亚雄无生育能力，撑起医疗、科研、行政与参谋，并抚养全部幼虫。外敌翼族以捕食虫族进化。\n\n洛希边境是虫族与翼族交界的最前线，也是最危险的一处：那里的翼族免疫精神攻击，雌虫的精神力完全失效，因此长期只有军雄坚守，在雌虫之间成了禁地。\n\n你是一只雌虫，军校指挥官院毕业，两年内在各个战场拿下数场大捷。跟朋友的一次打赌，加上你自己的好胜心，你决定去洛希边境。为了不引人注目，你换上了便装。前往星港的路上，你遇上了正要回防线报到的军雄林昊。\n\n雌虫之间的匿名论坛《触角》随时可以打开。那里是另一条线：八卦、求助、蜜源测评、树洞，什么都有。论坛上的人可能在现实里认识你，现实里的事也可能被发到论坛上。",
+  "first_messages": [
+    "开场白/0.txt"
+  ],
+  "tags": [
+    "虫族",
+    "星际",
+    "雌虫",
+    "RPG",
+    "沙盒",
+    "论坛"
+  ],
+  "creator": "vient-awi",
+  "creator_notes": "",
+  "version": "1.0",
+  "create_date": "2026-09-27T04:17:10.362Z",
+  "extensions": {
+    "tavern_helper": {
+      "scripts": {
+        "MVU": {
+          "type": "script",
+          "script_file": "脚本/MVU.txt",
+          "enabled": true,
+          "id": "d0311ca6-5e9a-498e-a777-f74dc4dc6b12",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": [
+              {
+                "name": "重新处理变量",
+                "visible": true
+              },
+              {
+                "name": "重新读取初始变量",
+                "visible": true
+              },
+              {
+                "name": "快照楼层",
+                "visible": false
+              },
+              {
+                "name": "重演楼层",
+                "visible": false
+              },
+              {
+                "name": "重试额外模型解析",
+                "visible": false
+              },
+              {
+                "name": "清除旧楼层变量",
+                "visible": false
+              }
+            ]
+          },
+          "data": {}
+        }
+      },
+      "variables": {}
+    },
+    "talkativeness": "0.5",
+    "fav": false,
+    "depth_prompt": {
+      "prompt": "",
+      "depth": 4,
+      "role": "system"
+    }
+  },
+  "regex_scripts": {
+    "对AI隐藏状态栏": {
+      "id": "b5f2606f-69cc-4a6a-8ebb-bd8a3b7f671f",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0
+    },
+    "状态栏界面": {
+      "id": "ce6da13c-4e35-4057-8964-3192b7903acc",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replace_file": "正则/状态栏界面.html",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": true,
+      "substituteRegex": 0
+    },
+    "对AI隐藏变量更新": {
+      "id": "aa12731a-97c4-4450-ac2f-0bfe1d6a4f64",
+      "findRegex": "/<(update(?:variable)?)>(?:(?!.*<\\/\\1>)(?:(?!<\\1>).)*$|(?:(?!<\\1>).)*<\\/\\1?>)/gsi",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": false,
+      "substituteRegex": 0
+    },
+    "变量更新中美化": {
+      "id": "b9d5f25b-a9d0-41bf-8a69-602d64bbde22",
+      "findRegex": "/<(update(?:variable)?)>(?!.*<\\/\\1>)\\s*((?:(?!<\\1>).)*)\\s*$/gsi",
+      "replace_file": "正则/变量更新中美化.html",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": false,
+      "substituteRegex": 0
+    },
+    "变量更新美化": {
+      "id": "92d49340-fe5e-4929-871f-43d110e5ec76",
+      "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi",
+      "replace_file": "正则/变量更新美化.html",
+      "trimStrings": [],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": false,
+      "substituteRegex": 0
+    }
+  },
+  "zod": {
+    "scriptName": "Zod",
+    "scriptId": "5b3b09af-35e3-4149-a0f7-2f08776ed6a1",
+    "schemaPath": "schema.ts",
+    "importUrl": "https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js"
+  }
+}

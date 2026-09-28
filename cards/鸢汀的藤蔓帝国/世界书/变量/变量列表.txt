@@ -1,0 +1,15 @@
+---
+<status_current_variable>
+蔺鸢汀:
+  {{format_message_variable::stat_data.蔺鸢汀}}
+林昊:
+  {{format_message_variable::stat_data.林昊}}
+猎物库统计:
+  {{format_message_variable::stat_data.猎物库统计}}
+调教场景:
+  {{format_message_variable::stat_data.调教场景}}
+世界状态:
+  {{format_message_variable::stat_data.世界状态}}
+副本进度:
+  {{format_message_variable::stat_data.副本进度}}
+</status_current_variable>

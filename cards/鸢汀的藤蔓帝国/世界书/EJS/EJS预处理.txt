@@ -1,0 +1,12 @@
+@@generate_before
+<%_
+define('player_stage', getvar('stat_data.蔺鸢汀._当前大境界', { defaults: '萌芽期' }));
+define('player_stage_num', getvar('stat_data.蔺鸢汀._当前小阶', { defaults: 1 }));
+define('player_abilities', getvar('stat_data.蔺鸢汀.已解锁能力', { defaults: ['基础插入'] }));
+define('current_location', getvar('stat_data.世界状态.当前地点', { defaults: '' }));
+define('current_round', getvar('stat_data.调教场景.当前轮次', { defaults: 0 }));
+define('linhao_status', getvar('stat_data.林昊.当前状态', { defaults: '待命中' }));
+define('dungeon_bug_unlocked', getvar('stat_data.副本进度.虫族.解锁状态', { defaults: '未解锁' }));
+define('dungeon_beast_unlocked', getvar('stat_data.副本进度.兽族.解锁状态', { defaults: '未解锁' }));
+define('dungeon_wing_unlocked', getvar('stat_data.副本进度.翼族.解锁状态', { defaults: '未解锁' }));
+_%>

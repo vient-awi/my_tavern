@@ -1,0 +1,257 @@
+{
+  "projectName": "虫族",
+  "worldbookName": "虫族",
+  "form": "charactercard",
+  "mvu": true,
+  "entryManifest": {
+    "世界观": {},
+    "扮演准则": {},
+    "时间线": {},
+    "地理": {},
+    "阶段指导": {},
+    "事件": {},
+    "角色": {
+      "林昊_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "林昊"
+        ],
+        "abstract": "林昊的基础信息：洛希防线副官，上尉，在洛希坚守五年的雄虫，主角前往边境途中偶遇的军雄",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"林昊\">"
+          },
+          {
+            "file": "世界书/角色/林昊/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ]
+      },
+      "林昊_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "林昊"
+        ],
+        "abstract": "林昊的性格调色盘：沉默隐忍为底色，忠诚专一与细心体贴为主色调，点缀占有欲与细腻",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"林昊\">"
+          },
+          {
+            "file": "世界书/角色/林昊/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ]
+      },
+      "凯恩斯顿_基础信息": {
+        "part": "basic",
+        "scope": "specific",
+        "abstract": "凯恩·斯顿的基础信息：洛希防线少将、实际指挥官，因雄兄之死对雌虫有根深蒂固的偏见",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"凯恩·斯顿\">"
+          },
+          {
+            "file": "世界书/角色/凯恩·斯顿/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "keywords": [
+          "凯恩·斯顿",
+          "凯恩",
+          "斯顿少将"
+        ]
+      },
+      "凯恩斯顿_性格调色盘": {
+        "part": "personality",
+        "scope": "specific",
+        "abstract": "凯恩·斯顿的性格调色盘：暴躁粗鲁为底色，重情重义与责任感为主色调，点缀对雌虫的偏见、战斗狂热、嘴硬心软",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"凯恩·斯顿\">"
+          },
+          {
+            "file": "世界书/角色/凯恩·斯顿/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "keywords": [
+          "凯恩·斯顿",
+          "凯恩",
+          "斯顿少将"
+        ]
+      },
+      "戴蒙暗影_基础信息": {
+        "part": "basic",
+        "scope": "specific",
+        "abstract": "戴蒙·暗影的基础信息：洛希防线情报部中校、暗影小队负责人，满身疤痕、生殖腔旧伤、擅吹骨笛",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"戴蒙·暗影\">"
+          },
+          {
+            "file": "世界书/角色/戴蒙·暗影/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "keywords": [
+          "戴蒙·暗影",
+          "戴蒙",
+          "暗影中校"
+        ]
+      },
+      "戴蒙暗影_性格调色盘": {
+        "part": "personality",
+        "scope": "specific",
+        "abstract": "戴蒙·暗影的性格调色盘：沉默寡言为底色，专业冷静与深沉内敛为主色调，点缀艺术气质与冷峻",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"戴蒙·暗影\">"
+          },
+          {
+            "file": "世界书/角色/戴蒙·暗影/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "keywords": [
+          "戴蒙·暗影",
+          "戴蒙",
+          "暗影中校"
+        ]
+      }
+    },
+    "NPC": {},
+    "MVU": {}
+  },
+  "typeLists": {
+    "before_char": [
+      "世界观",
+      "扮演准则",
+      "时间线",
+      "地理"
+    ],
+    "after_char": [
+      "角色",
+      "NPC"
+    ],
+    "depth": [
+      "阶段指导",
+      "事件",
+      "MVU"
+    ]
+  },
+  "strategyThresholds": {
+    "角色": {
+      "basic": {
+        "threshold": 5,
+        "required": true
+      },
+      "other": {
+        "threshold": 2,
+        "required": false
+      },
+      "personality": {
+        "threshold": 2,
+        "required": true
+      },
+      "tri_faceted": {
+        "threshold": 2,
+        "required": false
+      }
+    },
+    "事件": 0,
+    "地理": {
+      "faction": {
+        "threshold": 4,
+        "required": false
+      },
+      "region": {
+        "threshold": 4,
+        "required": false
+      },
+      "scene": {
+        "threshold": 4,
+        "required": false
+      }
+    },
+    "MVU": {
+      "initvar": {
+        "threshold": null,
+        "required": false
+      },
+      "output_format": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "update_rules": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "variable_list": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "NPC": 0,
+    "扮演准则": "Infinity",
+    "时间线": {
+      "history": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "plot": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "世界观": "Infinity",
+    "阶段指导": "Infinity"
+  },
+  "partOrder": {
+    "角色": [
+      "basic",
+      "personality",
+      "tri_faceted",
+      "other"
+    ],
+    "地理": [
+      "region",
+      "scene",
+      "faction"
+    ],
+    "MVU": [
+      "variable_list",
+      "update_rules",
+      "output_format",
+      "initvar"
+    ],
+    "时间线": [
+      "history",
+      "plot"
+    ]
+  },
+  "depth_defaults": {
+    "role": "system",
+    "depth": 0
+  },
+  "description": "",
+  "first_messages": [],
+  "creator": "",
+  "creator_notes": "",
+  "version": "1.0",
+  "create_date": "2026-09-27T04:17:10.362Z"
+}

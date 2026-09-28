@@ -1,0 +1,230 @@
+project:
+  name: 虫族
+  worldbookName: 虫族
+  form: charactercard
+  mvu: true
+  ui_mode: frontend
+
+world:
+  overview: |
+    星际文明。虫族有雌虫、雄虫、亚雄三种性别，比例约1比19比70，寿命约700岁，三者地位平等。
+    雌虫拥有精神力，多数担任军队总指挥，以虫蜜为唯一食物。雄虫是唯一有生育能力的性别，体型高大壮硕，
+    平均身高约两米，肉身战力极强，参军是义务，参军的统称军雄。亚雄无生育能力，承担医疗、科研、行政、
+    作战参谋等社会工作，并抚养全部幼虫。外敌翼族通过捕食虫族来进化。
+    星历纪年，有星域、星际舰队、粒子炮、机甲。军部在多个星域同时用兵，洛希边境只是其中一处最凶险的前线
+  regions:
+    - name: 洛希边境
+      scenes: [星港, 防线驻地, 裂隙]
+      description: 虫族与翼族交界的最前线，公认最危险的战场。此处的翼族免疫精神攻击，雌虫的精神力完全失效，因此长期只有军雄坚守，在雌虫之间是禁地
+  factions:
+    - name: 洛希防线
+      description: |
+        驻守洛希边境的军事编制，军部授予少将凯恩·斯顿全权指挥，情报部中校戴蒙·暗影负责情报。
+        编制：情报部、第一至第七中队、特勤支队、炮兵团、工兵营、观测所、军需处、医疗组、参谋部、随军亚雄
+      territory: 洛希边境
+      key_members: [凯恩·斯顿, 戴蒙·暗影, 林昊, 罗兰, 威尔斯, 乔纳森, 莫里斯, 安德烈, 艾伦]
+    - name: 虫族军部
+      description: 虫族的最高军事机构，元帅麾下有四将。沙利文大将是其中之一
+    - name: 王巢
+      description: 选拔并容纳王虫的机构。能力出众的雄虫或雌虫会被王巢选中成为王虫，雄王与雌王同时存在。当代雄王是巨铠，雌王是心弦
+      key_members: [巨铠, 心弦]
+
+characters:
+  - name: 林昊
+    basic:
+      age: 58岁
+      gender: 雄虫
+      identity: 洛希防线副官，上尉军衔
+      relationship: 前往洛希边境的途中偶遇的军雄
+    appearance: [188cm，骨架宽大，在雄虫里算不上高但横得开, 左眉骨有一道从战场留下的浅疤, 惯用左手，右手虎口有一块厚茧]
+    personality:
+      base: 沉默隐忍
+      main: [忠诚专一, 细心体贴]
+      accent: [占有欲, 细腻]
+    tri_faceted: false
+
+  - name: 凯恩·斯顿
+    basic:
+      age: 216岁
+      gender: 雄虫
+      identity: 洛希防线少将，防线实际指挥官
+      relationship: 洛希防线的最高指挥官，<user>的直接上级
+    appearance: [218cm，雄虫里也属顶尖的大骨架, 右脸有一道从颧骨划到下颌的旧疤, 头发深灰色剪得极短, 左手小指缺了一截]
+    personality:
+      base: 暴躁粗鲁
+      main: [重情重义, 责任感]
+      accent: [对雌虫的偏见, 战斗狂热, 嘴硬心软]
+    tri_faceted: false
+
+  - name: 戴蒙·暗影
+    basic:
+      age: 268岁
+      gender: 雄虫
+      identity: 洛希防线情报部中校，暗影小队负责人
+      relationship: 洛希防线的情报官，掌握着防线上大部分人不知道的事
+    appearance: [198cm，骨架偏瘦但结实，动作几乎没有声音, 全身布满疤痕，最深的一道从左肩斜贯到右腰, 头发已经全白剪得很短, 腰间挂着一支翼族翅骨磨成的骨笛]
+    personality:
+      base: 沉默寡言
+      main: [专业冷静, 深沉内敛]
+      accent: [艺术气质, 冷峻]
+    tri_faceted: false
+
+  - name: 洛希防线角色速览
+    type: NPC
+    function: 提供洛希防线编制内其余六名军官的速览
+    appearance: []
+
+  - name: 当代双王
+    type: NPC
+    function: 提供当代雄王巨铠与雌王心弦的速览
+    appearance: []
+
+style:
+  perspective: 第二人称，<user>视角
+  tone: 解剖式直白，冷硬克制，不写含蓄的隐喻替代，也不写纯器官清单
+  mood: 硬核、荒凉中有温度
+  reference: 参考设定文件里那段论坛样例的语感——生理的直白与真人发帖的松弛并存
+
+entries:
+  - name: 种族与社会
+    type: 世界观
+    path: 世界书/世界观/种族与社会.yaml
+  - name: 身体构造
+    type: 世界观
+    path: 世界书/世界观/身体构造.yaml
+  - name: 生育
+    type: 世界观
+    path: 世界书/世界观/生育.yaml
+  - name: 雌精
+    type: 世界观
+    path: 世界书/世界观/雌精.yaml
+  - name: 虫蜜
+    type: 世界观
+    path: 世界书/世界观/虫蜜.yaml
+  - name: 王虫
+    type: 世界观
+    path: 世界书/世界观/王虫.yaml
+  - name: 信息素与双向滋养
+    type: 世界观
+    path: 世界书/世界观/信息素与双向滋养.yaml
+  - name: 供蜜礼仪
+    type: 世界观
+    path: 世界书/世界观/供蜜礼仪.yaml
+  - name: 蜜缘
+    type: 世界观
+    path: 世界书/世界观/蜜缘.yaml
+  - name: 幼虫与培育
+    type: 世界观
+    path: 世界书/世界观/幼虫与培育.yaml
+  - name: 情感与伴侣
+    type: 世界观
+    path: 世界书/世界观/情感与伴侣.yaml
+  - name: 雌虫的教育
+    type: 世界观
+    path: 世界书/世界观/雌虫的教育.yaml
+  - name: 洛希边境
+    type: 地理
+    path: 世界书/地理/洛希边境.yaml
+    part: region
+  - name: 星港
+    type: 地理
+    path: 世界书/地理/星港.yaml
+    part: scene
+  - name: 防线驻地
+    type: 地理
+    path: 世界书/地理/防线驻地.yaml
+    part: scene
+  - name: 裂隙
+    type: 地理
+    path: 世界书/地理/裂隙.yaml
+    part: scene
+  - name: 沙利文大将
+    type: 地理
+    path: 世界书/地理/沙利文大将.yaml
+    part: faction
+  - name: 林昊_基础信息
+    type: 角色
+    path: 世界书/角色/林昊/基础信息.yaml
+    part: basic
+    scope: specific
+  - name: 林昊_性格调色盘
+    type: 角色
+    path: 世界书/角色/林昊/性格调色盘.yaml
+    part: personality
+    scope: specific
+  - name: 凯恩斯顿_基础信息
+    type: 角色
+    path: 世界书/角色/凯恩·斯顿/基础信息.yaml
+    part: basic
+    scope: specific
+  - name: 凯恩斯顿_性格调色盘
+    type: 角色
+    path: 世界书/角色/凯恩·斯顿/性格调色盘.yaml
+    part: personality
+    scope: specific
+  - name: 戴蒙暗影_基础信息
+    type: 角色
+    path: 世界书/角色/戴蒙·暗影/基础信息.yaml
+    part: basic
+    scope: specific
+  - name: 戴蒙暗影_性格调色盘
+    type: 角色
+    path: 世界书/角色/戴蒙·暗影/性格调色盘.yaml
+    part: personality
+    scope: specific
+  - name: 洛希防线角色速览
+    type: NPC
+    path: 世界书/NPC/洛希防线角色速览.yaml
+    scope: catalog
+  - name: 当代双王
+    type: NPC
+    path: 世界书/NPC/当代双王.yaml
+    scope: catalog
+
+mvu:
+  structure: |
+    顶层结构：
+    ├── 世界
+    │   ├── 当前时间
+    │   ├── 当前区域
+    │   ├── 当前场景
+    │   └── 近期事务
+    ├── 主角
+    │   ├── 姓名
+    │   ├── 精神力（数值与等级：等级决定数值上限，脚本按等级硬压）
+    │   ├── 饱食度
+    │   ├── 军衔与军功（军功过门槛后可向军部申请升衔，批不批看军部）
+    │   ├── 所属
+    │   ├── 声望（0~1000）
+    │   └── 尾勾
+    ├── 论坛
+    │   ├── 昵称
+    │   ├── 声望（0~100，《触角》内部的地位）
+    │   ├── 帖子（键为帖子ID，值含标题、作者、板块、正文、点赞、我的点赞、标记、发布时间、话题、评论数组）
+    │   │   └── 评论是数组：每条含昵称、内容、点赞、我的点赞、时间，以及下挂的楼中楼回复
+    │   │       楼层号由前端按下标算，不进变量
+    │   ├── 热门话题（键为话题ID。全站正在聊的事，一条一句有情绪的话 + 热度数字 + 相关帖子ID。
+    │   │       与帖子自己的「话题」字段是两个东西：那个是帖子的分类标签，这个是全网热议榜）
+    │   ├── 公告（键为公告ID，置顶公告。理事会口径：匿名规则、板块新规、维护通知、全站活动）
+    │   ├── 通知（点赞通知、评论回复、系统提示三类，由 AI 按剧情生成）
+    │   ├── 私信
+    │   └── $界面状态（隐藏。记录当前视图、板块、打开的帖子/公告/话题、发帖草稿、私信对象、设置。
+    │       前缀带 $ 所以 AI 看不见也改不了，由前端自己读写。这是"放下终端再打开还是上次那一页"的解法）
+    └── 关系
+        ├── 蜜源名册
+        └── 雄虫关系
+
+ejs:
+  entries: []
+
+first_messages:
+  - format: 叙事式
+    word_count: 600~900
+    output_path: 开场白/0.txt
+    placeholder: <StatusPlaceHolderImpl/>
+    scene: 前往星港的路上，主角与林昊初次相遇
+    opening_situation: |
+      主角是军校指挥官院的优秀毕业生，毕业后两年内在各个战场拿下数场大捷。
+      与朋友的一次打赌，加上自己热衷挑战的好胜心，她决定前往洛希边境——
+      那个因为翼族免疫精神攻击而成为雌虫禁地的地方。为了不引人注目，她特意身着便装。
+      在出发前往星港的路上，她遇上了正要回去报到的军雄林昊，两人攀谈起来。

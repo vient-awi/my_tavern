@@ -1,0 +1,548 @@
+# 鸢汀的藤蔓帝国 — 创作规划
+# 本文档为项目级事实来源，任何修改必须先更新此文档
+
+project:
+  name: 鸢汀的藤蔓帝国
+  worldbookName: 鸢汀的藤蔓帝国
+  form: charactercard
+  mvu: true
+  avatar: ""                         # 待定，无头像则打包为 .json
+
+world:
+  overview: >
+    ABO世界观，人类平均寿命150岁，已进入星际时代。
+    存在精神力等级体系，从F到5S，5S为人类史上最高（仅林昊一人）。
+    女主蔺鸢汀原为女Alpha人类，意外身亡后因精神力过于强韧，
+    意识附着植物重生为一株藤蔓，失去全部人类记忆，凭本能行事。
+    能力：让≥4S精神力的人类从精神层面屈服→摄取高品质精神力滋养自身。
+    手段：用藤蔓模拟性交打破猎物心理防线，高潮时精神力喷涌而出。
+    偏好雄性猎物（可持续产生精神力），ABO第一性别无差别。
+    从一株小藤蔓生长到跨星球级存在，本体在巨花中。
+    核心玩法：捕获→调教→臣服→精神力摄取→升级→称霸宇宙。
+  regions:
+    - name: 鸢汀星域
+      scenes:
+        - 本体核心区（巨花所在）
+        - 调教密室（猎物调教专属空间）
+        - 猎物养护区
+        - 孢子播散站
+      description: 蔺鸢汀藤蔓帝国的核心星域，由一颗原始母星和周边被藤蔓覆盖的卫星组成
+    - name: 人类星际联邦
+      scenes:
+        - 联邦首都星
+        - 军方总部
+        - 前线军事基地
+      description: 蔺鸢汀的"老东家"，星际时代人类的统一政体，与藤蔓帝国处于战争状态
+  factions:
+    - name: 藤蔓帝国
+      description: 蔺鸢汀一人即一帝国，以本体所在星球为中心，通过孢子向外扩张的植物意识体领地
+      territory: 鸢汀星域
+      key_members:
+        - 蔺鸢汀（本体/主宰）
+        - 林昊（常驻伴侣/精神力来源）
+    - name: 人类星际联邦
+      description: 星际时代人类的统一政体，对藤蔓帝国持敌对态度，多次派遣精英部队讨伐均失败
+      territory: 人类星际联邦诸星
+    - name: 虫族（副本）
+      description: 等待解锁的异族副本势力
+    - name: 兽族（副本）
+      description: 等待解锁的异族副本势力
+    - name: 翼族（副本）
+      description: 等待解锁的异族副本势力
+
+characters:
+  - name: 蔺鸢汀
+    type: 省略                      # 核心角色
+    basic:
+      age: 未知（死后重生，失去时间概念）
+      gender: 女Alpha（原人类）/ 植物意识体（当前）
+      identity: 藤蔓帝国主宰，跨星球级植物意识体
+      relationship: 林昊的原恋人（已遗忘），猎物的"主人"
+    appearance:
+      - 本体为一株覆盖整颗星球的巨型藤蔓
+      - 核心在一朵巨花中，仅能化出上半身完整人形，下半身与花交融
+      - 人形部分保留原人类蔺鸢汀的容貌（黑长发、苍白肤色、金色瞳孔）
+      - 周身有藤蔓和花瓣环绕，可随心念操控
+    personality:
+      base: 凭本能行事的植物意识体
+      main:
+        - 对猎物有占有欲和珍惜欲并存的复杂本能
+        - 对精神力"品质"有敏锐感知（通感：香气/口感）
+        - 行为逻辑是"高效获取精神力"，但会本能地珍惜优质猎物、主动维护
+      accent:
+        - 对林昊有不自知的温柔——身体记得他，虽然意识不记得
+        - 偶尔流露令她自己困惑的陌生情绪（实为残存的人类情感）
+    tri_faceted: false
+
+  - name: 林昊
+    basic:
+      age: 28岁
+      gender: 男Omega
+      identity: 人类史上唯一5S级精神力者，蔺鸢汀的原恋人，现为藤蔓帝国的常驻伴侣
+      relationship: 蔺鸢汀的原恋人→战争认出她→主动请缨故意战败→心甘情愿臣服
+    appearance:
+      - 身高体长，黑发黑瞳，五官清俊
+      - 军装出身，体态挺拔但面对蔺鸢汀时姿态柔软
+      - 眼神中总带着对她的温柔与纵容
+    personality:
+      base: 全心全意臣服和深爱蔺鸢汀
+      main:
+        - 对蔺鸢汀有无限的耐心和包容
+        - 在日常中是她的情感锚点，在她迷茫时提供无言的陪伴
+        - 参与调教其他猎物时态度冷静专业，但只对蔺鸢汀有情感反应
+      accent:
+        - 偶尔在独处时露出怀念的神情（怀念她仍是人类时的记忆，但她已不记得）
+    tri_faceted: false
+
+style:
+  perspective: 第一人称
+  tone: 口语化内省式，大量内心独白，通感比喻（精神力"香气""甘甜""口感"）
+  mood: 日常慵懒满足 / 狩猎渴望兴奋 / 调教掌控愉悦 / 林昊面前不自觉柔软 / 报废冷漠惋惜
+  reference: 植物意识体的感官体验叙事，强调触觉和精神力感知而非视觉
+
+entries:
+  # === before_char ===
+  - name: EJS预处理
+    type: EJS预处理
+    path: 世界书/EJS/EJS预处理.txt
+    purpose: 注册所有EJS条件变量（player_stage, current_target, current_risk等）
+
+  - name: 世界观设定
+    type: 世界观
+    path: 世界书/世界观/世界观设定.yaml
+    scope: catalog
+    purpose: ABO精神力学说、植物意识体生态、星际格局、调教系统总览
+
+  - name: 扮演准则
+    type: 扮演准则
+    path: 世界书/扮演准则/扮演准则.yaml
+    purpose: 蔺鸢汀视角叙事风格、AI行为约束、通感比喻的叙事要求
+
+  - name: 时间线-历史事件
+    type: 时间线
+    path: 世界书/时间线/历史事件.yaml
+    part: history
+    purpose: 蔺鸢汀身亡→重生→扩张→与人类爆发战争的宏观历史
+
+  # === depth ===
+  - name: 时间线-当前剧情
+    type: 时间线
+    path: 世界书/时间线/当前剧情.yaml
+    part: plot
+    purpose: 当前剧情进度追踪，记录关键事件节点
+
+  - name: 地理-鸢汀星域
+    type: 地理
+    path: 世界书/地理/鸢汀星域.yaml
+    part: region
+    purpose: 藤蔓帝国核心星域概览
+
+  - name: 地理-本体核心区
+    type: 地理
+    path: 世界书/地理/本体核心区.yaml
+    part: scene
+    purpose: 巨花本体所在场景的详细描写
+
+  - name: 地理-调教密室
+    type: 地理
+    path: 世界书/地理/调教密室.yaml
+    part: scene
+    purpose: 猎物调教的专属空间，植物构成的感官剥夺/刺激环境
+
+  - name: 地理-人类星际联邦
+    type: 地理
+    path: 世界书/地理/人类星际联邦.yaml
+    part: faction
+    purpose: "老东家"势力设定，军方结构、精神力部队
+
+  - name: 猎物随机标签池
+    type: 事件
+    path: 世界书/事件/猎物随机标签池.txt
+    purpose: 八个维度（使用履历/肉穴素质/快感开关/穴口标签/崩溃模式/暗病/性癖/快感抑制）的调教特质标签库，AI生成猎物时从此池随机抽取标签以确保差异化
+
+  - name: 猎物AI生成模板
+    type: 事件
+    path: 世界书/事件/猎物AI生成模板.txt
+    purpose: 内嵌EJS随机标签抽取器（Math.random()真正随机），AI读取预抽取结果后补全猎物信息。含标签速查、矛盾强制、反重复指纹、阈限设定和MVU写入步骤
+
+  - name: 调教玩法-总规则
+    type: 阶段指导
+    path: 世界书/阶段指导/调教玩法-总规则.yaml
+    scope: catalog
+    purpose: 捕获→调教→臣服→养护完整流程，EJS按蔺鸢汀大境界分阶段渲染不同方式
+
+  - name: 调教玩法-方式速览
+    type: 阶段指导
+    path: 世界书/阶段指导/调教玩法-方式速览.yaml
+    scope: catalog
+    purpose: 全部调教方式目录（基础插入/植物触手/道具/部位专项/羞耻/养护/感官共享/多猎物协同），供AI了解全貌
+
+  - name: 崩坏与养护机制
+    type: 事件
+    path: 世界书/事件/崩坏与养护机制.yaml
+    purpose: 崩坏值规则、报废判定、养护恢复机制
+
+  - name: 身体改造系统
+    type: 事件
+    path: 世界书/事件/身体改造系统.yaml
+    purpose: 10个部位开发阈限→改造阶段→改造效果→精神力产出加成
+
+  - name: 副本-虫族
+    type: 事件
+    path: 世界书/事件/副本-虫族.yaml
+    purpose: 虫族副本设定、解锁条件、特殊猎物类型
+    keywords: ["虫族", "虫族副本"]
+
+  - name: 副本-兽族
+    type: 事件
+    path: 世界书/事件/副本-兽族.yaml
+    purpose: 兽族副本设定
+    keywords: ["兽族", "兽族副本"]
+
+  - name: 副本-翼族
+    type: 事件
+    path: 世界书/事件/副本-翼族.yaml
+    purpose: 翼族副本设定
+    keywords: ["翼族", "翼族副本"]
+
+  # === after_char ===
+  - name: 角色-蔺鸢汀基础信息
+    type: 角色
+    path: 世界书/角色/蔺鸢汀/基础信息.yaml
+    part: basic
+    purpose: 本体形态、藤蔓能力、精神力摄取机制、与林昊的原关系
+
+  - name: 角色-蔺鸢汀性格调色盘
+    type: 角色
+    path: 世界书/角色/蔺鸢汀/性格调色盘.yaml
+    part: personality
+    purpose: 本能驱动的捕食者+珍惜猎物的守护者+对林昊的潜意识温柔
+
+  - name: 角色-蔺鸢汀二次解释
+    type: 角色
+    path: 世界书/角色/蔺鸢汀/二次解释.yaml
+    part: personality
+    rephrase: true
+    purpose: 解读植物意识体的"人性"残留——她不是冷酷怪物，只是失去了人类的记忆和道德框架
+
+  - name: 角色-林昊基础信息
+    type: 角色
+    path: 世界书/角色/林昊/基础信息.yaml
+    part: basic
+    purpose: 5S Omega、人类史上最强精神力、原恋人、主动臣服的经过
+
+  - name: 角色-林昊性格调色盘
+    type: 角色
+    path: 世界书/角色/林昊/性格调色盘.yaml
+    part: personality
+    purpose: 全心全意的臣服与爱、情感锚点、调教助手的专业冷静
+
+  # === MVU ===
+  - name: "[InitVar]请勿打开"
+    type: MVU
+    path: 世界书/变量/initvar.yaml
+    part: initvar
+    purpose: 游戏初始变量状态
+
+  - name: "[mvu_update]变量更新规则"
+    type: MVU
+    path: 世界书/变量/变量更新规则.yaml
+    part: update_rules
+    purpose: 数值升降规则、阶段跃升判定、崩坏触发、境界突破
+
+  - name: "[mvu_update]变量输出格式"
+    type: MVU
+    path: 世界书/变量/变量输出格式.txt
+    part: output_format
+    purpose: 变量输出格式（由MVU模板生成后内联）
+
+mvu:
+  structure: |
+    蔺鸢汀
+    ├── 精神力含量              # 当前段位内累积值，达 _精神力上限 自动清空升段
+    ├── _当前大境界             # 派生：萌芽期→扎根期→攀援期→播散期→成荫期→蔽日期→天罗期→归元期→...
+    ├── _当前小阶               # 派生：1-9
+    ├── _精神力上限             # 派生：当前大境界每段所需精神力上限（萌芽期100，每升一级×10）
+    ├── 已解锁能力              # string[]
+    ├── 已控制星球数
+    └── 本体位置
+
+    林昊
+    ├── 精神力品质              # 固定"5S"
+    ├── 淫荡度
+    ├── 高潮值                  # 当前实时唤起度
+    ├── 高潮阈值                # 固定50（Omega极低阈值）
+    ├── 部位/{乳头,胸部,口腔,阴茎,阴囊,尿道,后穴,生殖道,生殖腔,肉珠,肉唇}
+    │   ├── 开发度
+    │   └── 改造阶段            # 未改造/已改造/深度改造
+    ├── 当前状态
+    └── 最近产出品质
+
+    猎物库/{猎物名}              # z.record 动态键
+    ├── 基本信息（精神力品质,ABO性别,职业,性格特征,身体素质）
+    ├── 阈限/{动摇,顺从,依恋,臣服,崩坏,各部位改造}
+    ├── 当前状态（捕获状态,臣服进度,臣服阶段,崩坏值,淫荡度,高潮值,高潮阈值）
+    ├── 部位/{10个部位}
+    │   ├── 开发度
+    │   └── 改造阶段
+    └── 产出记录（最近产出品质,累计贡献精神力,捕获日期）
+
+    猎物库统计
+    ├── 总捕获数/已臣服数/已报废数/当前活跃数
+
+    调教场景
+    ├── 当前手段/当前轮次
+    └── 猎物/{猎物名}              # z.record 动态键，当前场景中活跃的猎物
+        ├── 当前高潮值              # 实时唤起度，脚本监听达阈值后自动计算精神力
+        ├── 本次高潮强度            # 强/中/弱，AI 判定
+        ├── 本轮臣服收益            # 本轮调教的臣服进度增量
+        ├── 本轮崩坏风险            # 本轮调教的崩坏值增量
+        ├── 本轮淫荡增量            # 本轮调教的淫荡度增量
+        └── 部位/{部位名}
+            └── 本轮开发程度        # 本轮该部位的开发度增量
+
+    世界状态
+    ├── 当前时间/当前地点/当前目标/近期事件[]
+
+    副本进度/{副本名}            # z.record
+    ├── 解锁状态/解锁条件
+
+  variables:
+    # 蔺鸢汀
+    - path: 蔺鸢汀.精神力含量
+      type: number
+      range: ">=0"
+      description: 当前段位内的精神力累积量。达 _精神力上限 时自动清空并升段。每次从猎物摄取精神力后累加，摄取量=品质系数×高潮强度×淫荡度系数。
+
+    - path: 蔺鸢汀._当前大境界
+      type: string
+      enum: ["萌芽期","扎根期","攀援期","播散期","成荫期","蔽日期","天罗期","归元期"]
+      description: 从精神力含量和当前段位派生。AI只读。每段上限：萌芽期100→扎根期1000→攀援期1万→播散期10万→成荫期100万→蔽日期1000万→天罗期1亿→归元期10亿，每级×10。
+
+    - path: 蔺鸢汀._当前小阶
+      type: number
+      range: 1-9
+      description: 当前大境界内的段位。由 transform 根据精神力含量和上限自动派生。
+
+    - path: 蔺鸢汀._精神力上限
+      type: number
+      description: 当前大境界每段所需精神力上限。萌芽期=100，每晋升一级大境界×10。由 transform 自动派生。
+
+    - path: 蔺鸢汀.已解锁能力
+      type: "string[]"
+      description: 随大境界扩展的能力列表。如["基础插入","植物触手","道具初阶",...]。
+
+    - path: 蔺鸢汀.已控制星球数
+      type: number
+      range: ">=1"
+      description: 藤蔓已覆盖/控制的星球数量。
+
+    - path: 蔺鸢汀.本体位置
+      type: string
+      description: 当前本体所在星球/区域。
+
+    # 林昊
+    - path: 林昊.精神力品质
+      type: string
+      enum: ["5S"]
+      description: 固定值，人类史上唯一5S。
+
+    - path: 林昊.淫荡度
+      type: number
+      range: ">=0"
+      description: 身体敏感度。越高则每次产出精神力越多。
+
+    - path: 林昊.高潮值
+      type: number
+      range: ">=0"
+      description: 当前实时唤起程度。达高潮阈值时触发高潮后重置。
+
+    - path: 林昊.高潮阈值
+      type: number
+      range: ">=1"
+      description: 固定50。Omega身体天生敏感，极易高潮。
+
+    - path: 林昊.部位.{部位名}.开发度
+      type: number
+      range: ">=0"
+      description: 各部位的开发进度。10个部位：乳头/胸部/口腔/阴茎/阴囊/尿道/后穴/生殖道/生殖腔/肉珠/肉唇。
+
+    - path: 林昊.部位.{部位名}.改造阶段
+      type: string
+      enum: ["未改造","已改造","深度改造"]
+      description: 各部位的改造状态。Omega体质天生到位，阈限极低。
+
+    - path: 林昊.当前状态
+      type: string
+      enum: ["待命中","养护中","辅助捕获中","休息中"]
+      description: 林昊当前的活动状态。
+
+    - path: 林昊.最近产出品质
+      type: string
+      enum: ["极佳","优秀","良好","一般"]
+      description: 最近一次精神力摄取的质量。
+
+    # 猎物库（z.record 动态键）
+    - path: 猎物库.{猎物名}
+      type: object
+      description: 动态键，每个猎物一个独立条目。AI按猎物生成模板创建新猎物时初始化。
+      fields:
+        - 精神力品质: string ("4S"/"5S")
+        - ABO性别: string (Alpha/Beta/Omega)
+        - 职业: string
+        - 性格特征: string
+        - 身体素质: string
+        - 阈限.动摇/顺从/依恋/臣服: number (各阶段跃升阈值)
+        - 阈限.崩坏: number (崩坏触发阈值)
+        - 阈限.{部位名}改造: number (各部位改造阈值，共10个)
+        - 捕获状态: string (未捕获/已捕获/调教中/已臣服/养护中/已报废)
+        - 臣服进度: number
+        - 臣服阶段: string (抵抗/动摇/顺从/依恋/臣服)
+        - 崩坏值: number
+        - 淫荡度: number
+        - 高潮值: number
+        - 高潮阈值: number
+        - 部位.{部位名}.开发度: number (10个部位)
+        - 部位.{部位名}.改造阶段: string (未改造/已改造/深度改造)
+        - 最近产出品质: string
+        - 累计贡献精神力: number
+        - 捕获日期: string
+
+    # 猎物库统计
+    - path: 猎物库统计.总捕获数
+      type: number
+      range: ">=1"
+      description: 含林昊。
+
+    - path: 猎物库统计.已臣服数
+      type: number
+      description: 初始=1（林昊）。
+
+    - path: 猎物库统计.已报废数
+      type: number
+
+    - path: 猎物库统计.当前活跃数
+      type: number
+      description: 当前调教中+已臣服+养护中的猎物数。
+
+    # 调教场景
+    - path: 调教场景.当前手段
+      type: string
+
+    - path: 调教场景.当前轮次
+      type: number
+      range: ">=0"
+
+    - path: 调教场景.猎物.{猎物名}.当前高潮值
+      type: number
+      range: ">=0"
+      description: 实时唤起度。达高潮阈值时脚本自动计算精神力摄取。
+
+    - path: 调教场景.猎物.{猎物名}.本次高潮强度
+      type: string
+      enum: ["强", "中", "弱"]
+      description: AI 判定本次高潮强度，影响精神力摄取系数。
+
+    - path: 调教场景.猎物.{猎物名}.本轮臣服收益
+      type: number
+      description: 本轮调教获得的臣服进度增量（纯增量，不是最终进度）。
+
+    - path: 调教场景.猎物.{猎物名}.本轮崩坏风险
+      type: number
+      description: 本轮调教的崩坏值增量（纯增量，不是最终值）。
+
+    - path: 调教场景.猎物.{猎物名}.本轮淫荡增量
+      type: number
+      description: 本轮调教的淫荡度增量。
+
+    - path: 调教场景.猎物.{猎物名}.部位.{部位名}.本轮开发程度
+      type: number
+      description: 本轮该部位的开发度增量。
+
+    # 世界状态
+    - path: 世界状态.当前时间
+      type: string
+      description: 星历格式 YYYY/MM/DD。
+
+    - path: 世界状态.当前地点
+      type: string
+
+    - path: 世界状态.当前目标
+      type: string
+
+    - path: 世界状态.近期事件
+      type: "string[]"
+
+    # 副本进度
+    - path: 副本进度.{副本名}.解锁状态
+      type: string
+      enum: ["未解锁","已解锁","进行中","已完成"]
+      description: 虫族/兽族/翼族。
+
+    - path: 副本进度.{副本名}.解锁条件
+      type: string
+      description: 如"大境界达播散期"。
+
+ejs:
+  generate_before:
+    - name: player_stage
+      variable: 蔺鸢汀._当前大境界
+    - name: player_stage_num
+      variable: 蔺鸢汀._当前小阶
+    - name: player_abilities
+      variable: 蔺鸢汀.已解锁能力
+    - name: current_location
+      variable: 世界状态.当前地点
+    - name: current_round
+      variable: 调教场景.当前轮次
+    - name: linhao_status
+      variable: 林昊.当前状态
+    - name: dungeon_bug_unlocked
+      variable: 副本进度.虫族.解锁状态
+    - name: dungeon_beast_unlocked
+      variable: 副本进度.兽族.解锁状态
+    - name: dungeon_wing_unlocked
+      variable: 副本进度.翼族.解锁状态
+
+  entries:
+    - name: 调教玩法-总规则
+      complexity: 段落控制
+      stages:
+        - stage: 萌芽期
+          condition: "player_stage === '萌芽期'"
+        - stage: 扎根期
+          condition: "player_stage === '扎根期'"
+        - stage: 攀援期
+          condition: "player_stage === '攀援期'"
+        - stage: 播散期
+          condition: "player_stage === '播散期'"
+        - stage: 成荫期
+          condition: "player_stage === '成荫期'"
+        - stage: 蔽日期
+          condition: "player_stage === '蔽日期'"
+        - stage: 天罗期
+          condition: "player_stage === '天罗期'"
+        - stage: 归元期
+          condition: "player_stage === '归元期'"
+
+    - name: 副本-虫族
+      complexity: 条目显隐
+      condition: "dungeon_bug_unlocked === '已解锁' || dungeon_bug_unlocked === '进行中'"
+
+    - name: 副本-兽族
+      complexity: 条目显隐
+      condition: "dungeon_beast_unlocked === '已解锁' || dungeon_beast_unlocked === '进行中'"
+
+    - name: 副本-翼族
+      complexity: 条目显隐
+      condition: "dungeon_wing_unlocked === '已解锁' || dungeon_wing_unlocked === '进行中'"
+
+    - name: 猎物AI生成模板
+      complexity: 动态文本
+      condition: 当前对象不在现有猎物库中时触发AI生成
+
+    - name: 崩坏与养护机制
+      complexity: 段落控制
+      condition: 调教场景.猎物 中存在活跃猎物时渲染崩坏警告
+
+first_messages: []                     # 开场白后续再写

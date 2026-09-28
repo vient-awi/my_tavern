@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>《触角》论坛 · 离线自测</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #2b2b2b; }
+  #提示 {
+    font: 13px/1.7 system-ui, sans-serif;
+    color: #ddd; background: #1e1e1e; padding: 10px 14px;
+    border-bottom: 1px solid #444;
+  }
+  #提示 b { color: #e8a33d; }
+  #提示 code { background: #333; padding: 1px 5px; border-radius: 3px; color: #9ecbff; }
+  #提示 ol { margin: 6px 0 0 18px; padding: 0; }
+  #写回 {
+    font: 12px/1.6 ui-monospace, monospace;
+    color: #9ecbff; background: #141414; padding: 8px 14px;
+    border-top: 1px solid #444; white-space: pre-wrap;
+    max-height: 150px; overflow: auto;
+  }
+  iframe { display: block; width: 100%; height: 860px; border: 0; background: #fff; }
+</style>
+</head>
+<body>
+<!--
+  这个页面不连酒馆，自己伪造一份 MVU 环境把论坛前端跑起来。
+  用途：在没有酒馆的条件下先验证界面本身。
+  它验证不了：AI 变量更新、跨楼层状态恢复、正则替换 —— 那三样必须在酒馆里测。
+-->
+<div id="提示">
+  <b>《触角》论坛 · 离线自测</b>（不连酒馆）<br />
+  能验：板块切换 / 点帖看全文与评论 / 楼中楼回复 / 帖子与评论点赞 / 发帖（含选板块）/
+  搜索 / 热门话题 / 我的主页 / 设置 / 消息区四类 / 退出与重新打开。<br />
+  验不了：AI 写变量、跨楼层恢复、正则替换 —— 那三样必须在酒馆里测。
+  <ol>
+    <li><b>先跑 <code>pnpm watch</code></b>（在项目根目录另开一个终端）。不跑的话页面加载的是上次编译的旧产物，改了源码也不变样子</li>
+    <li>刷新本页。若还是旧样子，等编译完再刷一次</li>
+    <li>页面下方那行日志会实时显示变量写回结果 —— 确认点一下真的存进去了</li>
+  </ol>
+</div>
+
+<iframe id="论坛"></iframe>
+<div id="写回">（还没发生写回。在论坛里点个赞、发条评论试试。）</div>
+
+<!-- 酒馆助手运行时本来会注入这些全局，自测页得自己拉。
+     不带 zod：论坛前端不用它。 -->
+<script src="https://testingcf.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://testingcf.jsdelivr.net/npm/lodash@4/lodash.min.js"></script>
+<script src="https://testingcf.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+
+<!-- 假变量（变量名 假数据_论坛）。必须是普通 script，不能同目录 fetch：
+     Live Server 对本地文件的 XHR 会被 CORB 拦掉。 -->
+<script src="假变量.js"></script>
+
+<!-- 驱动逻辑。放外部文件是必须的：Live Server 的自动重载片段会插进
+     最后一个 inline 脚本的末尾，写在这里会被插坏。 -->
+<script src="自测页.js"></script>
+</body>
+</html>

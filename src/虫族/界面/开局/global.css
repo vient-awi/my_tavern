@@ -1,0 +1,259 @@
+.tc-open {
+  --o-bg: #161a1d;
+  --o-surface: #202629;
+  --o-surface-sunken: #0e1113;
+  --o-primary: #7fd8d0;
+  --o-primary-dim: #3d7a75;
+  --o-text: #dfe6e8;
+  --o-muted: #7d8a8d;
+  --o-border: #2e3639;
+  --o-danger: #e0603c;
+  --o-warning: #d9a441;
+  --o-success: #5fb87a;
+
+  font-family: 'Sarasa Mono SC', 'Noto Sans SC', -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--o-text);
+  background: var(--o-bg);
+  border: 1px solid var(--o-border);
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 100%;
+  user-select: text;
+}
+
+.tc-open * {
+  box-sizing: border-box;
+}
+
+.tc-o-head {
+  padding: 13px 16px 11px;
+  background: var(--o-surface);
+  border-bottom: 1px solid var(--o-border);
+}
+
+.tc-o-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--o-primary);
+  letter-spacing: 0.05em;
+}
+
+.tc-o-sub {
+  color: var(--o-muted);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.tc-o-body {
+  padding: 13px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tc-o-sect {
+  border: 1px solid var(--o-border);
+  border-radius: 3px;
+  padding: 11px 13px;
+  background: var(--o-surface);
+}
+
+.tc-o-secttitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--o-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 9px;
+}
+
+.tc-o-field {
+  margin-bottom: 10px;
+}
+
+.tc-o-field:last-child {
+  margin-bottom: 0;
+}
+
+.tc-o-label {
+  display: block;
+  font-size: 12px;
+  color: var(--o-muted);
+  margin-bottom: 4px;
+}
+
+.tc-o-hint {
+  font-size: 11px;
+  color: var(--o-muted);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+.tc-o-input,
+.tc-o-textarea,
+.tc-o-select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 6px 9px;
+  border: 1px solid var(--o-border);
+  border-radius: 3px;
+  background: var(--o-surface-sunken);
+  color: var(--o-text);
+  resize: vertical;
+}
+
+.tc-o-input:focus,
+.tc-o-textarea:focus,
+.tc-o-select:focus {
+  outline: none;
+  border-color: var(--o-primary-dim);
+}
+
+.tc-o-textarea {
+  min-height: 62px;
+}
+
+/* 选项卡 */
+.tc-o-opts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 7px;
+}
+
+.tc-o-opt {
+  text-align: left;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--o-border);
+  border-radius: 3px;
+  background: var(--o-surface-sunken);
+  color: var(--o-text);
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.tc-o-opt:hover {
+  border-color: var(--o-primary-dim);
+}
+
+.tc-o-opt--on {
+  border-color: var(--o-primary);
+  background: #1b2b2a;
+}
+
+.tc-o-opt-name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.tc-o-opt-desc {
+  color: var(--o-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* 数值分配 */
+.tc-o-meter {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tc-o-meter .tc-o-label {
+  min-width: 5em;
+  margin-bottom: 0;
+}
+
+.tc-o-range {
+  flex: 1;
+  accent-color: var(--o-primary);
+}
+
+.tc-o-num {
+  font-variant-numeric: tabular-nums;
+  min-width: 2.4em;
+  text-align: right;
+  color: var(--o-primary);
+}
+
+.tc-o-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.tc-o-chip {
+  font-size: 11px;
+  padding: 1px 7px;
+  border: 1px solid var(--o-border);
+  border-radius: 9px;
+  color: var(--o-muted);
+}
+
+.tc-o-chip b {
+  color: var(--o-text);
+  font-weight: 600;
+}
+
+.tc-o-actions {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 0 16px 16px;
+  flex-wrap: wrap;
+}
+
+.tc-o-btn {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 7px 17px;
+  border: 1px solid var(--o-border);
+  border-radius: 3px;
+  background: var(--o-surface);
+  color: var(--o-text);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.tc-o-btn:hover {
+  border-color: var(--o-primary-dim);
+}
+
+.tc-o-btn--primary {
+  background: var(--o-primary);
+  border-color: var(--o-primary);
+  color: #0e1416;
+  font-weight: 700;
+}
+
+.tc-o-btn--primary:hover {
+  background: #96e3dc;
+}
+
+.tc-o-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.tc-o-err {
+  color: var(--o-danger);
+  font-size: 12px;
+}
+
+.tc-o-done {
+  padding: 22px 16px;
+  text-align: center;
+  color: var(--o-muted);
+}
+
+.tc-o-done-title {
+  color: var(--o-primary);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
