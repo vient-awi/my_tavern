@@ -11,6 +11,7 @@ pnpm-debug.log*
 
 auto-imports.d.ts
 components.d.ts
+<<<<<<< HEAD
 
 .cardrc.json
 
@@ -24,3 +25,5 @@ dist/
 
 # 酒馆本机数据，体积大且与代码无关
 酒馆数据/
+=======
+>>>>>>> 5cbce61438c014a1b01c610cf547c63c2cb8fee1
