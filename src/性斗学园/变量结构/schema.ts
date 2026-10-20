@@ -254,10 +254,11 @@ export const Schema = z.object({
       _魅力: z.coerce.number().min(0).prefault(10),
       _幸运: z.coerce.number().min(0).prefault(10),
       _闪避率: z.coerce.number().min(0).prefault(0),
-      _暴击率: z.coerce
-        .number()
-        .transform(n => clamp(n, 0, 100))
-        .prefault(0),
+      _暴击率: z.coerce.number().min(0).prefault(0),
+      _性斗力加成: z.coerce.number().prefault(0),
+      _性斗力成算: z.coerce.number().prefault(0),
+      _忍耐力加成: z.coerce.number().prefault(0),
+      _忍耐力成算: z.coerce.number().prefault(0),
     })
     .prefault({}),
 
@@ -368,7 +369,7 @@ export const Schema = z.object({
         .number()
         .transform(n => clamp(n, -100, 100))
         .prefault(0),
-      女权协会: z.coerce
+      男权协会: z.coerce
         .number()
         .transform(n => clamp(n, -100, 100))
         .prefault(0),
@@ -388,11 +389,11 @@ export const Schema = z.object({
         .number()
         .transform(n => clamp(n, -100, 100))
         .prefault(0),
-      男性自保联盟: z.coerce
+      女性自保联盟: z.coerce
         .number()
         .transform(n => clamp(n, -100, 100))
         .prefault(0),
-      雌堕会: z.coerce
+      雄堕会: z.coerce
         .number()
         .transform(n => clamp(n, -100, 100))
         .prefault(0),

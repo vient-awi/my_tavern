@@ -124,6 +124,23 @@
         },
         "_暴击率": {
           "default": 0,
+          "type": "number",
+          "minimum": 0
+        },
+        "_性斗力加成": {
+          "default": 0,
+          "type": "number"
+        },
+        "_性斗力成算": {
+          "default": 0,
+          "type": "number"
+        },
+        "_忍耐力加成": {
+          "default": 0,
+          "type": "number"
+        },
+        "_忍耐力成算": {
+          "default": 0,
           "type": "number"
         }
       }
@@ -654,7 +671,7 @@
           "default": 0,
           "type": "number"
         },
-        "女权协会": {
+        "男权协会": {
           "default": 0,
           "type": "number"
         },
@@ -674,11 +691,11 @@
           "default": 0,
           "type": "number"
         },
-        "男性自保联盟": {
+        "女性自保联盟": {
           "default": 0,
           "type": "number"
         },
-        "雌堕会": {
+        "雄堕会": {
           "default": 0,
           "type": "number"
         }
