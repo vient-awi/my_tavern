@@ -674,7 +674,7 @@ export const EQUIPMENT_SETS: EquipmentSetData[] = [
   },
   {
     id: 'set_dominatrix',
-    name: '女王套装',
+    name: '男王套装',
     description: '支配者专用的豪华套装',
     icon: 'Crown',
     pieces: ['eq_golden_whip', 'eq_collar', 'eq_resilience_amulet'],

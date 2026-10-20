@@ -999,7 +999,7 @@ const applyCheatCode = async () => {
         const equipment = {
           类型: '装备',
           等级: 'S',
-          描述: '举手投足间都是金钱的味道。在校园里，魅力就是她的通行证，没人能拒绝她的请求。',
+          描述: '举手投足间都是金钱的味道。在校园里，魅力就是他的通行证，没人能拒绝他的请求。',
           加成属性: {
             魅力加成: 10,
             幸运加成: 0,
@@ -2178,11 +2178,16 @@ const handleStartGame = async () => {
 
       // 生活模拟模式：保存NPC的立绘作为玩家头像（战斗界面使用）
       // 特殊角色的立绘文件名与角色名不同，需要映射
+      // 全员性转改版：左侧是显示用男名（npcCharacters 的 name），
+      // 右侧是 CDN 立绘资源女名（与 PORTRAIT_NAME_MAP 的映射结果一致）。
+      //
+      // 注意：这里的键必须与 npcCharacters.ts 的 name **完全一致**（含 "蔷薇" 这种多余后缀）。
+      // getEnemyPortraitUrl() 自己会查 PORTRAIT_NAME_MAP，所以像「艾格纳斯」这种
+      // 已经在表里的名字**不需要**再写进本表 —— 多写一条键对不上就会静默失效。
       const specialPortraitMap: Record<string, string> = {
-        沐芯兰: '沐芯兰_2',
-        克莉丝汀: '克莉丝汀_2',
-        艾格妮丝蔷薇: '艾格妮丝',
-        伊甸芙宁: '伊甸芙宁_2',
+        沐心岚: '沐芯兰_2',
+        克里斯: '克莉丝汀_2',
+        伊登芙宁: '伊甸芙宁',
       };
       const portraitName = specialPortraitMap[selectedNpc.value.name] || selectedNpc.value.name;
       const npcPortraitUrl = getEnemyPortraitUrl(portraitName);

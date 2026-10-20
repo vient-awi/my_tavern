@@ -115,8 +115,8 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
     },
     {
       id: 'm_femboy',
-      name: '娇俏伪娘',
-      description: '比女生更可爱的小男娘，容易激起保护欲。',
+      name: '娇俏伪郎',
+      description: '比男生更可爱的小男郎，容易激起保护欲。',
       icon: 'Cat',
       passiveSkill: {
         id: 'p_dazed',
@@ -299,7 +299,7 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
   [Gender.FEMALE]: [
     {
       id: 'f_onee',
-      name: '成熟御姐',
+      name: '成熟御男',
       description: '气场强大，身材惹火，举手投足间散发着致命魅力。',
       icon: 'Crown',
       passiveSkill: {
@@ -325,7 +325,7 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
     },
     {
       id: 'f_sweet',
-      name: '甜美软妹',
+      name: '甜美软男',
       description: '治愈系的笑容，温柔体贴，像是棉花糖一样柔软。',
       icon: 'Heart',
       passiveSkill: {
@@ -377,7 +377,7 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
     },
     {
       id: 'f_mesugaki',
-      name: '雌小鬼',
+      name: '雄小鬼',
       description: '性格恶劣，喜欢嘲讽，但在吃瘪时会露出绝妙表情。',
       icon: 'Ghost',
       passiveSkill: {
@@ -429,7 +429,7 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
     },
     {
       id: 'f_gyaru',
-      name: '黑皮辣妹',
+      name: '黑皮辣仔',
       description: '健康的小麦色皮肤，性格豪爽，玩得很花。',
       icon: 'Zap',
       passiveSkill: {
@@ -508,7 +508,7 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
     {
       id: 'f_chuuni',
       name: '中二病',
-      description: '坚信自己拥有特殊力量的电波系少女。',
+      description: '坚信自己拥有特殊力量的电波系少男。',
       icon: 'Eye',
       passiveSkill: {
         id: 'p_delusion',
@@ -533,8 +533,8 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
     },
     {
       id: MAGIC_GIRL_ARCHETYPE_ID,
-      name: '魔法少女',
-      description: '来自于星见市的现代最强魔法少女。',
+      name: '魔法少男',
+      description: '来自于星见市的现代最强魔法少男。',
       icon: 'Wand',
       passiveSkill: {
         id: 'p_magic_armor_shadow_princess',
@@ -693,7 +693,7 @@ export const ARCHETYPES: Record<Gender, Archetype[]> = {
     },
     {
       id: 'o_cyborg',
-      name: '机娘',
+      name: '机郎',
       description: '全身义体化的改造人，拥有精密的计算能力与震动功能。',
       icon: 'Cpu',
       passiveSkill: {
