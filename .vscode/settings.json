@@ -49,6 +49,10 @@
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+<<<<<<< HEAD
   "typescript.tsdk": "node_modules/typescript/lib",
   "claudeCode.hideOnboarding": true
+=======
+  "typescript.tsdk": "node_modules/typescript/lib"
+>>>>>>> b29875444d854f6c190ef102d8ecf361ae020f06
 }
