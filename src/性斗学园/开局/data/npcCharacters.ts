@@ -431,7 +431,7 @@ export const NPC_CHARACTERS: NpcCharacter[] = [
     portraitKey: '沐心岚_1',
     level: 88,
     category: '独立势力',
-    description: '操控男王傀儡茉莉的社恐少男',
+    description: '操控男王傀儡茉荆的社恐少男',
   },
   {
     id: 'yuecheng_yao',
